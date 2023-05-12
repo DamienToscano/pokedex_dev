@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .title-1 {
+        @apply text-4xl font-bold my-6;
+    }
+    .title-2 {
+        @apply text-3xl font-bold my-2 text-gray-500;
+    }
+    .pokemon_line_title {
+        @apply font-semibold text-gray-400 inline-block mb-2;
+    }
+    .pokemon_info_list_item {
+        @apply px-2 py-1 mr-3 font-semibold bg-gray-200 rounded;
+    }
+}

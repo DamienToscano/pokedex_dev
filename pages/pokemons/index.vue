@@ -3,7 +3,7 @@
         <NuxtLink to="/">
             <ArrowLeftIcon class="w-8 h-8 text-gray-400 hover:text-black" />
         </NuxtLink>
-        <h1 class="title-1">Pokedex</h1>
+        <h1 class="title-1">Pokemons</h1>
         <SearchBar v-model="search" placeholder="Search a pokemon !!!" />
         <h2 class="title-2">Choose a type </h2>
         <div class="flex flex-nowrap gap-x-4 overflow-auto mb-6 pb-6 mt-4">

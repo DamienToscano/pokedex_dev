@@ -1,10 +1,10 @@
 <template>
     <div>
-        <h1 class="title-1">Welcome to the pokedev</h1>
-        <div class="grid grid-cols-2 gap-8">
+        <h1 class="title-1 mt-12">Welcome to the pokedev</h1>
+        <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
             <MenuCard v-for="item in menu" :key="item.name" :name="item.name" :link="item.link" :bg_color="item.bg_color" :shadow_color="item.shadow_color" />
-            <PokemonRandomCard class="col-span-2" />
         </div>
+            <PokemonRandomCard class="mt-6 sm:mt-8" />
     </div>
 </template>
 
@@ -19,7 +19,7 @@ type MenuType = {
     shadow_color: string,
 }
 const menu: MenuType[] = [
-    { name: 'Pokedex', link: 'pokemons', bg_color: 'bg-grass', shadow_color: 'shadow-grass/80' },
+    { name: 'Pokemons', link: 'pokemons', bg_color: 'bg-grass', shadow_color: 'shadow-grass/80' },
     { name: 'Moves', link: 'moves', bg_color: 'bg-fighting', shadow_color: 'shadow-fighting/80' },
     { name: 'Abilities', link: 'abilities', bg_color: 'bg-water', shadow_color: 'shadow-water/80' },
     { name: 'Items', link: 'items', bg_color: 'bg-electric', shadow_color: 'shadow-electric/80' },

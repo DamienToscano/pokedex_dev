@@ -4,7 +4,7 @@
 
 @layer components {
     .title-1 {
-        @apply text-4xl font-bold my-6;
+        @apply text-2xl sm:text-4xl font-bold my-6;
     }
     .title-2 {
         @apply text-3xl font-bold my-2 text-gray-500;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="title-1 mt-12">Welcome to the pokedev</h1>
+        <h1 class="title-1 mt-4 sm:mt-12">Welcome to the pokedev</h1>
         <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
             <MenuCard v-for="item in menu" :key="item.name" :name="item.name" :link="item.link" :bg_color="item.bg_color" :shadow_color="item.shadow_color" />
         </div>

@@ -22,7 +22,7 @@
             before:bg-white/20
             hover:before:bg-white/40
             before:transition-all" :class="`bg-${pokemon.types[0].name} shadow-${pokemon.types[0].name}`">
-        <h2 class="mb-6">Pokemon random</h2>
+        <h2 class="mb-2 sm:mb-6">Pokemon random</h2>
         <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between">
             <h1 class="text-3xl sm:text-5xl font-bold tracking-wider">
                 <NuxtLink :to="`/pokemons/${pokemon.id}`" class="-ml-4 px-4 py-1 hover:bg-white/20 cursor rounded-md">{{

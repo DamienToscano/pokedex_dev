@@ -47,7 +47,7 @@
                 </div>
             </div>
             <!-- Characteristics part -->
-            <div class="px-12 py-6 bg-white rounded-3xl min-h-[60%] max-w-3xl shadow-xl m-auto">
+            <div class="px-8 sm:px-12 py-6 bg-white rounded-3xl min-h-[60%] max-w-3xl shadow-xl m-auto">
                 <nav class="mt-8">
                     <ul class="flex justify-around font-semibold text-gray-400">
                         <li v-for="nav_item in nav" :key="nav_item.name"

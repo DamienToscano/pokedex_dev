@@ -19,10 +19,12 @@
         <h2 class="mb-4 text-xl font-bold text-gray-800">And what more ?</h2>
         <ul>
             <li><span class="pokemon_line_title w-36">Abilities</span>
-                <span v-for="ability in pokemon.abilities" :key="ability.name" class="pokemon_info_list_item">{{
-                    capitalize(ability.name).replaceAll(
-                        '-', ' '
-                    ) }}</span>
+                <div class="flex flex-wrap gap-2 mb-2 sm:inline">
+                    <span v-for="ability in pokemon.abilities" :key="ability.name" class="pokemon_info_list_item">{{
+                        capitalize(ability.name).replaceAll(
+                            '-', ' '
+                        ) }}</span>
+                </div>
             </li>
             <li><span class="pokemon_line_title w-36">Growth rate</span>
                 {{ capitalize(pokemon_specy.growth_rate) }}</li>

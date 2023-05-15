@@ -2,7 +2,7 @@
     <div>
         <p>{{ pokemon_specy.description }}</p>
         <p>His main color is {{ pokemon_specy.color }} and lives in {{ pokemon_specy.habitat }}.</p>
-        <div class="flex rounded-xl p-4 justify-around mx-8 my-8 bg-white shadow-[1px_2px_17px_-1px_rgba(56,56,56,0.45)]">
+        <div class="flex rounded-xl p-4 justify-around mx-0 md:mx-8 my-8 bg-white shadow-[1px_2px_17px_-1px_rgba(56,56,56,0.45)]">
             <div>
                 <p class="font-semibold text-gray-500">
                     <ArrowUpTrayIcon class="inline-block w-5 h-5 mr-1" />Height

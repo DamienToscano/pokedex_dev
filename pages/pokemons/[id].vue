@@ -33,15 +33,15 @@
                 <div class="relative mx-auto w-fit -mb-14">
                     <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                         class="absolute bottom-0 w-4/5 h-4/5 left-8">
-                    <img class="relative w-auto h-80" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`">
+                    <img class="relative w-auto h-60 sm:h-80" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`">
                     <!-- Previous pokemon -->
                     <NuxtLink v-if="previous_pokemon" :to="`/pokemons/${previous_pokemon.id}`">
-                        <img class="absolute w-auto transition-all h-44 md:h-52 -left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
+                        <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
                             :src="previous_pokemon.picture" :alt="`Picture of ${pokemon.name}`">
                     </NuxtLink>
                     <!-- Next pokemon -->
                     <NuxtLink v-if="next_pokemon" :to="`/pokemons/${next_pokemon.id}`">
-                        <img class="absolute w-auto transition-all h-44 md:h-52 -right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
+                        <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
                             :src="next_pokemon.picture" :alt="`Picture of ${pokemon.name}`">
                     </NuxtLink>
                 </div>

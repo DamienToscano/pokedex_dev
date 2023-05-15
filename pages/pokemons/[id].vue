@@ -9,14 +9,14 @@
                 <NuxtLink to="/pokemons">
                     <ArrowLeftIcon class="w-8 h-8 my-6" />
                 </NuxtLink>
-                <div class="flex items-center justify-between">
+                <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between">
                     <h1 class="text-5xl font-bold tracking-wider">
                         {{ capitalize(pokemon.name) }}
                         <SpeakerWaveIcon
                             class="inline-block w-8 h-8 transition-transform cursor-pointer hover:scale-110 hover:-rotate-12"
                             @click="playCry" />
                     </h1>
-                    <div class="text-2xl font-bold">#{{ pokemon.id.toString().padStart(3, '0') }}</div>
+                    <div class="text-2xl font-bold opacity-80">#{{ pokemon.id.toString().padStart(3, '0') }}</div>
                 </div>
                 <div class="flex items-center justify-between">
                     <ul class="flex gap-4 mt-4">

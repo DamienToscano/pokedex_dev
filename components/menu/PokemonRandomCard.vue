@@ -7,7 +7,8 @@
             sm:px-16
             pt-8
             pb-2
-            rounded-3xl
+            rounded-xl
+            sm:rounded-3xl
             text-white
             font-bold
             text-2xl

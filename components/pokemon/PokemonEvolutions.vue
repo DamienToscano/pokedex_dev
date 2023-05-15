@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="text-xl font-bold text-gray-800 mb-4">Evolution chain</h2>
-        <div class="mx-8">
+        <div class="sm:mx-8">
             <template v-for="evolution in pokemon_evolutions" v-if="pokemon_evolutions.length > 1">
                 <div v-if="evolution.trigger && evolution.base_pokemon" class="flex items-center justify-between my-4">
                     <NuxtLink :to="`/pokemons/${evolution.base_pokemon.id}`">

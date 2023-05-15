@@ -49,13 +49,13 @@
             <!-- Characteristics part -->
             <div class="px-12 py-6 bg-white rounded-3xl min-h-[60%] max-w-3xl shadow-xl m-auto">
                 <nav class="mt-8">
-                    <ul class="flex font-semibold text-gray-400">
+                    <ul class="flex justify-around font-semibold text-gray-400">
                         <li v-for="nav_item in nav" :key="nav_item.name"
                             class="flex items-center pb-2 pr-8 text-sm transition-colors duration-200 cursor-pointer md:text-lg hover:text-gray-800"
                             :class="{ 'text-gray-800 border-b-gray-800': active_nav == nav_item.name }"
                             @click="active_nav = nav_item.name">
-                            <component :is="nav_item.icon" class="w-6 h-6 mr-2"></component>
-                            {{ nav_item.name }}
+                            <component :is="nav_item.icon" class="w-8 h-8 sm:w-6 sm:h-6 mr-2"></component>
+                            <span class="hidden sm:inline">{{ nav_item.name }}</span>
                         </li>
                     </ul>
                 </nav>

@@ -10,7 +10,7 @@ import { PokemonEncounter } from '@/data/models/pokemon-encounter'
 
 export const usePokemonStore = defineStore('pokemonStore', {
     state: () => ({
-        mode: <string>'local',
+        mode: <string>'api',
         pokemons: <Pokemon[]>[],
         pokemons_species: <PokemonSpecy[]>[],
         pokemons_encounters: <PokemonEncounter[]>[],

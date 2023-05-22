@@ -10,6 +10,7 @@ import { PokemonEncounter } from '@/data/models/pokemon-encounter'
 
 export const usePokemonStore = defineStore('pokemonStore', {
     state: () => ({
+        mode: <string>'local',
         pokemons: <Pokemon[]>[],
         pokemons_species: <PokemonSpecy[]>[],
         pokemons_encounters: <PokemonEncounter[]>[],
@@ -78,76 +79,112 @@ export const usePokemonStore = defineStore('pokemonStore', {
 
             this.loading = true
 
-            // Make an array with index from 1 to 151
-            const pokemon_ids = Array.from(Array(151).keys()).map((i) => i + 1)
+            /* ******** */
+            /* API MODE */
+            /* ******** */
+            if (this.mode === 'api') {
 
-            this.pokemons = await Promise.all(pokemon_ids.map(async (id: number) => {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-                return Pokemon.fromJson(await response.json())
-            }))
+                // Make an array with index from 1 to 151
+                const pokemon_ids = Array.from(Array(151).keys()).map((i) => i + 1)
 
-            // Check the moves method we want to get
-            const move_urls = <Array<string>>[]
-            const ability_urls = <Array<string>>[]
+                this.pokemons = await Promise.all(pokemon_ids.map(async (id: number) => {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                    return Pokemon.fromJson(await response.json())
+                }))
 
-            this.pokemons.forEach((pokemon) => {
-                pokemon.moves.forEach((move) => {
-                    if (!move_urls.includes(move.url)) {
-                        move_urls.push(move.url)
-                    }
+                // Check the moves method we want to get
+                const move_urls = <Array<string>>[]
+                const ability_urls = <Array<string>>[]
+
+                this.pokemons.forEach((pokemon) => {
+                    pokemon.moves.forEach((move) => {
+                        if (!move_urls.includes(move.url)) {
+                            move_urls.push(move.url)
+                        }
+                    })
+
+                    pokemon.abilities.forEach((ability) => {
+                        if (!ability_urls.includes(ability.url)) {
+                            ability_urls.push(ability.url)
+                        }
+                    })
                 })
 
-                pokemon.abilities.forEach((ability) => {
-                    if (!ability_urls.includes(ability.url)) {
-                        ability_urls.push(ability.url)
-                    }
-                })
-            })
+                // Store moves
+                this.moves = await Promise.all(move_urls.map(async (url: string) => {
+                    const response = await fetch(url)
+                    return Move.fromJson(await response.json())
+                }))
 
-            // Store moves
-            this.moves = await Promise.all(move_urls.map(async (url: string) => {
-                const response = await fetch(url)
-                return Move.fromJson(await response.json())
-            }))
+                // Store abilities
+                this.abilities = await Promise.all(ability_urls.map(async (url: string) => {
+                    const response = await fetch(url)
+                    return Ability.fromJson(await response.json())
+                }))
 
-            // Store abilities
-            this.abilities = await Promise.all(ability_urls.map(async (url: string) => {
-                const response = await fetch(url)
-                return Ability.fromJson(await response.json())
-            }))
+                // Store pokemon species
+                this.pokemons_species = await Promise.all(pokemon_ids.map(async (id: number) => {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+                    return PokemonSpecy.fromJson(await response.json())
+                }))
 
-            // Store pokemon species
-            this.pokemons_species = await Promise.all(pokemon_ids.map(async (id: number) => {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
-                return PokemonSpecy.fromJson(await response.json())
-            }))
+                // Store pokemon encounters
+                this.pokemons_encounters = await Promise.all(pokemon_ids.map(async (id: number) => {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
+                    return PokemonEncounter.fromJson(await response.json(), id)
+                }))
 
-            // Store pokemon encounters
-            this.pokemons_encounters = await Promise.all(pokemon_ids.map(async (id: number) => {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
-                return PokemonEncounter.fromJson(await response.json(), id)
-            }))
+                // Store pokemon evolutions
+                const evolution_chain_ids = Array.from(Array(this.evolution_chain_limit).keys()).map((i) => i + 1)
 
-            // Store pokemon evolutions
-            const evolution_chain_ids = Array.from(Array(this.evolution_chain_limit).keys()).map((i) => i + 1)
+                let pokemons_evolutions_details = await Promise.all(evolution_chain_ids.map(async (id: number) => {
+                    const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}`)
+                    return response.json()
+                }))
 
-            let pokemons_evolutions_details = await Promise.all(evolution_chain_ids.map(async (id: number) => {
-                const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}`)
-                return response.json()
-            }))
+                this.formatPokemonEvolutions(pokemons_evolutions_details)
 
-            this.formatPokemonEvolutions(pokemons_evolutions_details)
+                // Get Items
+                this.items = await Promise.all(ItemsList.map(async (item: string) => {
+                    const response = await fetch(`https://pokeapi.co/api/v2/item/${item}`)
+                    return Item.fromJson(await response.json())
+                }))
+
+            }
+            /* ********** */
+            /* LOCAL MODE */
+            /* ********** */
+            else {
+                // Get pokemons from local json file
+                const response_pokemons = await fetch('/json/pokemons.json')
+                this.pokemons = await response_pokemons.json()
+
+                // Get moves from local json file
+                const response_moves = await fetch('/json/moves.json')
+                this.moves = await response_moves.json()
+
+                // Get abilities from local json file
+                const response_abilities = await fetch('/json/abilities.json')
+                this.abilities = await response_abilities.json()
+
+                // Get pokemon species from local json file
+                const response_pokemons_species = await fetch('/json/pokemons-species.json')
+                this.pokemons_species = await response_pokemons_species.json()
+
+                // Get pokemon encounters from local json file
+                const response_pokemons_encounters = await fetch('/json/pokemons-encounters.json')
+                this.pokemons_encounters = await response_pokemons_encounters.json()
+
+                // Get pokemon evolutions from local json file
+                const response_pokemons_evolutions = await fetch('/json/pokemons-evolutions.json')
+                this.pokemons_evolutions = await response_pokemons_evolutions.json()
+
+                // Get items from local json file
+                const response_items = await fetch('/json/items.json')
+                this.items = await response_items.json()
+            }
 
             this.loading = false
-
-            // Get pokemon location -> https://pokeapi.co/api/v2/pokemon/1/encounters
-
-            // Get Items
-            this.items = await Promise.all(ItemsList.map(async (item: string) => {
-                const response = await fetch(`https://pokeapi.co/api/v2/item/${item}`)
-                return Item.fromJson(await response.json())
-            }))
-
             this.isLoaded = true
         },
         formatPokemonEvolutions(json: any) {

@@ -6,10 +6,10 @@
         <h1 class="title-1">Moves</h1>
         <SearchBar v-model="search" placeholder="Search a move !!!" />
         <h2 class="title-2">Choose a type </h2>
-        <div class="flex pb-6 mt-4 mb-6 overflow-auto flex-nowrap gap-x-4">
-            <AllTypesFilterButton @click="filter = ''" :active="filter == ''" />
+        <div class="flex pb-6 mt-4 mb-6 overflow-auto flex-nowrap gap-x-4 snap-x">
+            <AllTypesFilterButton @click="filter = ''" :active="filter == ''" class="snap-start" />
             <TypeFilterButton v-for="pokemon_type in types" :key="pokemon_type" :type="pokemon_type"
-                @click="filter = pokemon_type" :active="filter == pokemon_type" />
+                @click="filter = pokemon_type" :active="filter == pokemon_type" class="snap-start" />
         </div>
         <div>
             <ul class="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">

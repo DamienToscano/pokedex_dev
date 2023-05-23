@@ -155,33 +155,20 @@ export const usePokemonStore = defineStore('pokemonStore', {
             /* LOCAL MODE */
             /* ********** */
             else {
-                // Get pokemons from local json file
-                const response_pokemons = await fetch('/json/pokemons.json')
-                this.pokemons = await response_pokemons.json()
 
-                // Get moves from local json file
-                const response_moves = await fetch('/json/moves.json')
-                this.moves = await response_moves.json()
+                this.pokemons = (await queryContent('/pokemons/list').findOne()).body
 
-                // Get abilities from local json file
-                const response_abilities = await fetch('/json/abilities.json')
-                this.abilities = await response_abilities.json()
+                this.moves = (await queryContent('/moves/list').findOne()).body
 
-                // Get pokemon species from local json file
-                const response_pokemons_species = await fetch('/json/pokemons-species.json')
-                this.pokemons_species = await response_pokemons_species.json()
+                this.abilities = (await queryContent('/abilities/list').findOne()).body
 
-                // Get pokemon encounters from local json file
-                const response_pokemons_encounters = await fetch('/json/pokemons-encounters.json')
-                this.pokemons_encounters = await response_pokemons_encounters.json()
+                this.pokemons_species = (await queryContent('/pokemons/species').findOne()).body
 
-                // Get pokemon evolutions from local json file
-                const response_pokemons_evolutions = await fetch('/json/pokemons-evolutions.json')
-                this.pokemons_evolutions = await response_pokemons_evolutions.json()
+                this.pokemons_encounters = (await queryContent('/pokemons/encounters').findOne()).body
 
-                // Get items from local json file
-                const response_items = await fetch('/json/items.json')
-                this.items = await response_items.json()
+                this.pokemons_evolutions = (await queryContent('/pokemons/evolutions').findOne()).body
+
+                this.items = (await queryContent('/items/list').findOne()).body
             }
 
             this.loading = false

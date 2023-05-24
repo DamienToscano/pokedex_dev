@@ -5,7 +5,7 @@ import { PokemonEvolutionType, PokemonEvolutionBaseType } from '@/types/pokemons
 import { Move } from '@/data/models/move'
 import { Ability } from '@/data/models/ability'
 import { Item } from '~/data/models/item'
-import { ItemsNameList } from '@/data/sources/items'
+import { ItemsNameList } from '~/data/sources/items/names'
 import { PokemonEncounter } from '@/data/models/pokemon-encounter'
 import { AbilitiesList } from '@/data/sources/abilities/list'
 import { MovesList } from '@/data/sources/moves/list'

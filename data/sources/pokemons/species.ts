@@ -1,4 +1,4 @@
-[
+export const PokemonsSpecies = [
     {
         "description": "A strange seed was\nplanted on its\nback at birth.\fThe plant sprouts\nand grows with\nthis POKéMON.",
         "habitat": "grassland",

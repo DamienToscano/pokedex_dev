@@ -23,6 +23,6 @@ import { usePokemonStore } from '@/stores/PokemonStore'
 import Loader from '@/components/loader/Loader.vue';
 
 const pokemonStore = usePokemonStore();
-pokemonStore.fetchData();
+pokemonStore.handleFetch();
 
 </script>

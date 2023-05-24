@@ -5,8 +5,16 @@ import { PokemonEvolutionType, PokemonEvolutionBaseType } from '@/types/pokemons
 import { Move } from '@/data/models/move'
 import { Ability } from '@/data/models/ability'
 import { Item } from '~/data/models/item'
-import { ItemsList } from '@/data/sources/items'
+import { ItemsNameList } from '@/data/sources/items'
 import { PokemonEncounter } from '@/data/models/pokemon-encounter'
+import { AbilitiesList } from '@/data/sources/abilities/list'
+import { MovesList } from '@/data/sources/moves/list'
+import { PokemonsSpecies } from '@/data/sources/pokemons/species'
+import { PokemonsEncounters } from '@/data/sources/pokemons/encounters'
+import { PokemonsEvolutions } from '@/data/sources/pokemons/evolutions'
+import { PokemonsList } from '@/data/sources/pokemons/list'
+import { ItemsList } from '@/data/sources/items/list'
+
 
 export const usePokemonStore = defineStore('pokemonStore', {
     state: () => ({
@@ -72,6 +80,13 @@ export const usePokemonStore = defineStore('pokemonStore', {
         }
     },
     actions: {
+        handleFetch() {
+            if (this.mode === 'api') {
+                this.fetchData()
+            } else {
+                this.fetchLocalData()
+            }
+        },
         async fetchData() {
             if (this.pokemons.length > 0) {
                 return
@@ -82,94 +97,92 @@ export const usePokemonStore = defineStore('pokemonStore', {
             /* ******** */
             /* API MODE */
             /* ******** */
-            if (this.mode === 'api') {
 
-                // Make an array with index from 1 to 151
-                const pokemon_ids = Array.from(Array(151).keys()).map((i) => i + 1)
+            // Make an array with index from 1 to 151
+            const pokemon_ids = Array.from(Array(151).keys()).map((i) => i + 1)
 
-                this.pokemons = await Promise.all(pokemon_ids.map(async (id: number) => {
-                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-                    return Pokemon.fromJson(await response.json())
-                }))
+            this.pokemons = await Promise.all(pokemon_ids.map(async (id: number) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                return Pokemon.fromJson(await response.json())
+            }))
 
-                // Check the moves method we want to get
-                const move_urls = <Array<string>>[]
-                const ability_urls = <Array<string>>[]
+            // Check the moves method we want to get
+            const move_urls = <Array<string>>[]
+            const ability_urls = <Array<string>>[]
 
-                this.pokemons.forEach((pokemon) => {
-                    pokemon.moves.forEach((move) => {
-                        if (!move_urls.includes(move.url)) {
-                            move_urls.push(move.url)
-                        }
-                    })
-
-                    pokemon.abilities.forEach((ability) => {
-                        if (!ability_urls.includes(ability.url)) {
-                            ability_urls.push(ability.url)
-                        }
-                    })
+            this.pokemons.forEach((pokemon) => {
+                pokemon.moves.forEach((move) => {
+                    if (!move_urls.includes(move.url)) {
+                        move_urls.push(move.url)
+                    }
                 })
 
-                // Store moves
-                this.moves = await Promise.all(move_urls.map(async (url: string) => {
-                    const response = await fetch(url)
-                    return Move.fromJson(await response.json())
-                }))
+                pokemon.abilities.forEach((ability) => {
+                    if (!ability_urls.includes(ability.url)) {
+                        ability_urls.push(ability.url)
+                    }
+                })
+            })
 
-                // Store abilities
-                this.abilities = await Promise.all(ability_urls.map(async (url: string) => {
-                    const response = await fetch(url)
-                    return Ability.fromJson(await response.json())
-                }))
+            // Store moves
+            this.moves = await Promise.all(move_urls.map(async (url: string) => {
+                const response = await fetch(url)
+                return Move.fromJson(await response.json())
+            }))
 
-                // Store pokemon species
-                this.pokemons_species = await Promise.all(pokemon_ids.map(async (id: number) => {
-                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
-                    return PokemonSpecy.fromJson(await response.json())
-                }))
+            // Store abilities
+            this.abilities = await Promise.all(ability_urls.map(async (url: string) => {
+                const response = await fetch(url)
+                return Ability.fromJson(await response.json())
+            }))
 
-                // Store pokemon encounters
-                this.pokemons_encounters = await Promise.all(pokemon_ids.map(async (id: number) => {
-                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
-                    return PokemonEncounter.fromJson(await response.json(), id)
-                }))
+            // Store pokemon species
+            this.pokemons_species = await Promise.all(pokemon_ids.map(async (id: number) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+                return PokemonSpecy.fromJson(await response.json())
+            }))
 
-                // Store pokemon evolutions
-                const evolution_chain_ids = Array.from(Array(this.evolution_chain_limit).keys()).map((i) => i + 1)
+            // Store pokemon encounters
+            this.pokemons_encounters = await Promise.all(pokemon_ids.map(async (id: number) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
+                return PokemonEncounter.fromJson(await response.json(), id)
+            }))
 
-                let pokemons_evolutions_details = await Promise.all(evolution_chain_ids.map(async (id: number) => {
-                    const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}`)
-                    return response.json()
-                }))
+            // Store pokemon evolutions
+            const evolution_chain_ids = Array.from(Array(this.evolution_chain_limit).keys()).map((i) => i + 1)
 
-                this.formatPokemonEvolutions(pokemons_evolutions_details)
+            let pokemons_evolutions_details = await Promise.all(evolution_chain_ids.map(async (id: number) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}`)
+                return response.json()
+            }))
 
-                // Get Items
-                this.items = await Promise.all(ItemsList.map(async (item: string) => {
-                    const response = await fetch(`https://pokeapi.co/api/v2/item/${item}`)
-                    return Item.fromJson(await response.json())
-                }))
+            this.formatPokemonEvolutions(pokemons_evolutions_details)
 
+            // Get Items
+            this.items = await Promise.all(ItemsNameList.map(async (item: string) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/item/${item}`)
+                return Item.fromJson(await response.json())
+            }))
+
+
+
+            this.loading = false
+            this.isLoaded = true
+        },
+        fetchLocalData() {
+            if (this.pokemons.length > 0) {
+                return
             }
-            /* ********** */
-            /* LOCAL MODE */
-            /* ********** */
-            else {
 
-                this.pokemons = (await queryContent('/pokemons/list').findOne()).body
+            this.loading = true
 
-                this.moves = (await queryContent('/moves/list').findOne()).body
-
-                this.abilities = (await queryContent('/abilities/list').findOne()).body
-
-                this.pokemons_species = (await queryContent('/pokemons/species').findOne()).body
-
-                this.pokemons_encounters = (await queryContent('/pokemons/encounters').findOne()).body
-
-                this.pokemons_evolutions = (await queryContent('/pokemons/evolutions').findOne()).body
-
-                this.items = (await queryContent('/items/list').findOne()).body
-            }
+            this.pokemons = PokemonsList as unknown as Array<Pokemon>
+            this.moves = MovesList as unknown as Array<Move>
+            this.abilities = AbilitiesList as unknown as Array<Ability>
+            this.pokemons_species = PokemonsSpecies as unknown as Array<PokemonSpecy>
+            this.pokemons_encounters = PokemonsEncounters as unknown as Array<PokemonEncounter>
+            this.pokemons_evolutions = PokemonsEvolutions as unknown as Array<Array<PokemonEvolutionType>>
+            this.items = ItemsList as unknown as Array<Item>
 
             this.loading = false
             this.isLoaded = true

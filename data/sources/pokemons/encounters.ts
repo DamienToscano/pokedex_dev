@@ -1,4 +1,4 @@
-[
+export const PokemonsEncounters = [
     {
         "pokemon_id": 1,
         "encounters": [

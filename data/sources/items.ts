@@ -1,4 +1,4 @@
-export const ItemsList = <Array<string>>[
+export const ItemsNameList = <Array<string>>[
     'antidote',
     'awakening',
     'bicycle',

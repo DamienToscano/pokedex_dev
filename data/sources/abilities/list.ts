@@ -1,4 +1,4 @@
-[
+export const AbilitiesList = [
     {
         "id": 65,
         "name": "overgrow",
@@ -682,5 +682,5 @@
         "name": "multiscale",
         "description": "Reduces damage when HP\nis full.",
         "effect": "Halves damage taken from full HP."
-    }
+    },
 ]

@@ -1,4 +1,4 @@
-[
+export const ItemsList = [
     {
         "id": 18,
         "name": "antidote",

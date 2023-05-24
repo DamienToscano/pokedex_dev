@@ -1,4 +1,4 @@
-[
+export const PokemonsList = [
     {
         "id": 1,
         "name": "bulbasaur",

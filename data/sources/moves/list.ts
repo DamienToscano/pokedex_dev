@@ -1,4 +1,4 @@
-[
+export const MovesList = [
     {
         "id": 33,
         "name": "tackle",

@@ -19,10 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePokemonStore } from '@/stores/PokemonStore'
 import Loader from '@/components/loader/Loader.vue';
-
-const pokemonStore = usePokemonStore();
-pokemonStore.handleFetch();
 
 </script>

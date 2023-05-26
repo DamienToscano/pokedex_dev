@@ -1,4 +1,6 @@
-export const MovesList = [
+import { Move } from "~/data/models/move";
+
+export const MovesList = <Array<Move>>[
     {
         "id": 33,
         "name": "tackle",

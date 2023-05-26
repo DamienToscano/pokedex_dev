@@ -1,4 +1,6 @@
-export const AbilitiesList = [
+import { Ability } from "~/data/models/ability";
+
+export const AbilitiesList = <Array<Ability>>[
     {
         "id": 65,
         "name": "overgrow",

@@ -10,7 +10,7 @@
                     <ArrowLeftIcon class="w-8 h-8 my-6" />
                 </NuxtLink>
                 <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between">
-                    <h1 class="text-5xl font-bold tracking-wider">
+                    <h1 class="text-5xl font-bold tracking-wider selection:bg-transparent">
                         {{ capitalize(pokemon.name) }}
                         <SpeakerWaveIcon
                             class="inline-block w-8 h-8 transition-transform cursor-pointer hover:scale-110 hover:-rotate-12"
@@ -51,10 +51,10 @@
                 <nav class="mt-8">
                     <ul class="flex justify-around font-semibold text-gray-400">
                         <li v-for="nav_item in nav" :key="nav_item.name"
-                            class="flex items-center pb-2 pr-8 text-sm transition-colors duration-200 cursor-pointer md:text-lg hover:text-gray-800"
+                            class="flex items-center sm:pb-2 sm:pr-8 text-sm transition-colors duration-200 cursor-pointer md:text-lg hover:text-gray-800"
                             :class="{ 'text-gray-800 border-b-gray-800': active_nav == nav_item.name }"
                             @click="active_nav = nav_item.name">
-                            <component :is="nav_item.icon" class="w-8 h-8 sm:w-6 sm:h-6 mr-2"></component>
+                            <component :is="nav_item.icon" class="w-8 h-8 sm:w-6 sm:h-6 sm:mr-2"></component>
                             <span class="hidden sm:inline">{{ nav_item.name }}</span>
                         </li>
                     </ul>

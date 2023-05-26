@@ -1,4 +1,6 @@
-export const ItemsList = [
+import { Item } from "~/data/models/item";
+
+export const ItemsList = <Array<Item>>[
     {
         "id": 18,
         "name": "antidote",

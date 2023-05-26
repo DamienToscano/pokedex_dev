@@ -1,4 +1,6 @@
-export const PokemonsEncounters = [
+import { PokemonEncounter } from "~/data/models/pokemon-encounter";
+
+export const PokemonsEncounters = <Array<PokemonEncounter>>[
     {
         "pokemon_id": 1,
         "encounters": [

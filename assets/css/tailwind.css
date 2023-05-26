@@ -16,3 +16,8 @@
         @apply px-2 py-1 mr-3 font-semibold bg-gray-200 rounded;
     }
 }
+
+/* Remove blue highlight when tap element on mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
+}

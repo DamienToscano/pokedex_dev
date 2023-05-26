@@ -8,7 +8,7 @@ export type PokemonStatType = {
 }
 
 export type PokemonMoveType = {
-    id: number,
+    id: number | string,
     url: string,
     name: string,
     level: number

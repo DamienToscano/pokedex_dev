@@ -1,4 +1,6 @@
-export const PokemonsList = [
+import { Pokemon } from "~/data/models/pokemon";
+
+export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 1,
         "name": "bulbasaur",

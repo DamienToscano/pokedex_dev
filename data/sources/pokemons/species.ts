@@ -1,4 +1,6 @@
-export const PokemonsSpecies = [
+import { PokemonSpecy } from "~/data/models/pokemon-specy";
+
+export const PokemonsSpecies = <Array<PokemonSpecy>>[
     {
         "description": "A strange seed was\nplanted on its\nback at birth.\fThe plant sprouts\nand grows with\nthis POKéMON.",
         "habitat": "grassland",

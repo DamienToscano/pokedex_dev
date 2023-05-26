@@ -76,7 +76,8 @@ export const usePokemonStore = defineStore('pokemonStore', {
             })[0]
         },
         getRandomPokemon: (state) => () => {
-            return state.pokemons[Math.floor(Math.random() * state.pokemons.length)]
+            const index = Math.floor(Math.random() * state.pokemons.length)
+            return state.pokemons[index]
         }
     },
     actions: {
@@ -176,13 +177,13 @@ export const usePokemonStore = defineStore('pokemonStore', {
 
             this.loading = true
 
-            this.pokemons = PokemonsList as unknown as Array<Pokemon>
-            this.moves = MovesList as unknown as Array<Move>
-            this.abilities = AbilitiesList as unknown as Array<Ability>
-            this.pokemons_species = PokemonsSpecies as unknown as Array<PokemonSpecy>
-            this.pokemons_encounters = PokemonsEncounters as unknown as Array<PokemonEncounter>
+            this.pokemons = PokemonsList
+            this.moves = MovesList
+            this.abilities = AbilitiesList
+            this.pokemons_species = PokemonsSpecies
+            this.pokemons_encounters = PokemonsEncounters
             this.pokemons_evolutions = PokemonsEvolutions as unknown as Array<Array<PokemonEvolutionType>>
-            this.items = ItemsList as unknown as Array<Item>
+            this.items = ItemsList
 
             this.loading = false
             this.isLoaded = true

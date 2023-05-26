@@ -2,7 +2,7 @@ import { PokemonEncounterType } from "~/types/pokemons";
 
 export class PokemonEncounter {
     pokemon_id: number;
-    encounters: PokemonEncounterType[];
+    encounters: PokemonEncounterType[] | [];
     
     constructor(pokemon_id: number, encounters: Array<any>) {
         this.pokemon_id = pokemon_id;

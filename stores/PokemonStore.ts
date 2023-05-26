@@ -76,6 +76,7 @@ export const usePokemonStore = defineStore('pokemonStore', {
             })[0]
         },
         getRandomPokemon: (state) => () => {
+
             const index = Math.floor(Math.random() * state.pokemons.length)
             return state.pokemons[index]
         }
@@ -171,10 +172,6 @@ export const usePokemonStore = defineStore('pokemonStore', {
             this.isLoaded = true
         },
         fetchLocalData() {
-            if (this.pokemons.length > 0) {
-                return
-            }
-
             this.loading = true
 
             this.pokemons = PokemonsList

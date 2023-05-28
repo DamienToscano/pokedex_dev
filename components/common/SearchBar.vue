@@ -4,7 +4,7 @@
         <input type="text"
             class="block py-2 pl-3 pr-20 font-semibold text-gray-600 bg-transparent border-0 placeholder:text-gray-400 placeholder:font-semibold focus:border-0 focus:outline-none cursor-text w-full"
             :placeholder="placeholder" :value="modelValue"
-            @input="$emit('update:modelValue', ($event?.target as HTMLInputElement)?.value)">
+            @input="$emit('update:modelValue', ($event?.target as HTMLInputElement)?.value.toLowerCase())">
     </div>
 </template>
 

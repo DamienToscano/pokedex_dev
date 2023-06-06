@@ -33,7 +33,8 @@
                 <div class="relative mx-auto w-fit -mb-14">
                     <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                         class="absolute bottom-0 w-4/5 h-4/5 left-8">
-                    <img class="relative w-auto h-60 sm:h-80" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`">
+                    <img class="relative w-auto h-60 sm:h-80 pokemon-picture" :src="pokemon.picture"
+                        :alt="`Picture of ${pokemon.name}`">
                     <!-- Previous pokemon -->
                     <NuxtLink v-if="previous_pokemon" :to="`/pokemons/${previous_pokemon.id}`">
                         <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
@@ -61,22 +62,30 @@
                 </nav>
                 <div class="mt-8">
                     <!-- About -->
-                    <div id="about" v-if="active_nav == 'About'">
-                        <PokemonAbout :pokemon="pokemon" :pokemon_specy="pokemon_specy"
-                            :pokemon_encounters="pokemon_encounters" />
-                    </div>
+                    <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
+                        <div id="about" v-if="active_nav == 'About'">
+                            <PokemonAbout :pokemon="pokemon" :pokemon_specy="pokemon_specy"
+                                :pokemon_encounters="pokemon_encounters" />
+                        </div>
+                    </Transition>
                     <!-- Stats -->
-                    <div id="stats" v-if="active_nav == 'Stats'">
-                        <PokemonStats :stats="pokemon.stats" />
-                    </div>
+                    <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
+                        <div id="stats" v-if="active_nav == 'Stats'">
+                            <PokemonStats :stats="pokemon.stats" />
+                        </div>
+                    </Transition>
                     <!-- Evolution -->
-                    <div id="evolution" v-if="active_nav == 'Evolution'">
-                        <PokemonEvolutions :pokemon_evolutions="pokemon_evolution" />
-                    </div>
+                    <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
+                        <div id="evolution" v-if="active_nav == 'Evolution'">
+                            <PokemonEvolutions :pokemon_evolutions="pokemon_evolution" />
+                        </div>
+                    </Transition>
                     <!-- Moves -->
-                    <div class="moves" v-if="active_nav == 'Moves'">
-                        <PokemonMoves :moves="pokemon.moves" />
-                    </div>
+                    <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
+                        <div class="moves" v-if="active_nav == 'Moves'">
+                            <PokemonMoves :moves="pokemon.moves" />
+                        </div>
+                    </Transition>
                 </div>
             </div>
         </div>
@@ -95,6 +104,7 @@ import PokemonAbout from '@/components/pokemon/PokemonAbout.vue';
 import PokemonEvolutions from '@/components/pokemon/PokemonEvolutions.vue';
 import PokemonMoves from '@/components/pokemon/PokemonMoves.vue';
 import { PokemonSpecy } from '~/data/models/pokemon-specy';
+import gsap from 'gsap';
 
 const { id } = useRoute().params
 
@@ -164,5 +174,20 @@ function playCry() {
     const audio = new Audio('/audio/cries/' + pokemon.value.id + '.mp3')
     audio.play()
 }
+
+/* Animations */
+const beforeEnter = (el: HTMLElement) => {
+    gsap.set(el, { opacity: 0 })
+}
+
+const enter = (el: HTMLElement, done: () => void) => {
+    gsap.to(el, {
+        opacity: 1,
+        duration: 0.3,
+        onComplete: done,
+    })
+}
+
+/* TODO: Animer les éléments du haut de page avec un transition */
 
 </script>

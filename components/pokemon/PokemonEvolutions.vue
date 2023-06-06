@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="evolution-container">
         <h2 class="text-xl font-bold text-gray-800 mb-4">Evolution chain</h2>
         <div class="sm:mx-8">
             <template v-for="evolution in pokemon_evolutions" v-if="pokemon_evolutions.length > 1">
-                <div v-if="evolution.trigger && evolution.base_pokemon" class="flex items-center justify-between my-4">
+                <div v-if="evolution.trigger && evolution.base_pokemon" class="flex items-center justify-between my-4 evolution-line">
                     <NuxtLink :to="`/pokemons/${evolution.base_pokemon.id}`">
                         <div class="relative text-center font-semibold group">
                             <img src="@/assets/images/pokeball_dark.svg" alt="Pokeball icon"
@@ -39,6 +39,7 @@
 import { capitalize } from 'vue';
 import { PokemonEvolutionType } from '~/types/pokemons';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid';
+import gsap from 'gsap';
 
 const props = defineProps<{
     pokemon_evolutions: PokemonEvolutionType[];
@@ -58,6 +59,24 @@ const has_no_evolution = computed(() => {
     })
 
     return flag
+})
+
+onMounted(() => {
+    if (has_no_evolution.value) {
+        return
+    }
+
+    const container = <HTMLElement>document.querySelector('.evolution-container');
+    const lines = document.querySelectorAll('.evolution-line');
+
+    let ctx = gsap.context(() => {
+        gsap.from(lines, {
+            duration: 1,
+            opacity: 0,
+            ease: 'power2.out',
+            stagger: 0.2,
+        });
+    }, container)
 })
 
 </script>

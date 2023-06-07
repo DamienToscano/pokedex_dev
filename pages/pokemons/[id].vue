@@ -32,7 +32,7 @@
                             <p>{{ capitalize(pokemon_specy.shape) }}</p>
                         </div>
                     </div>
-                    <div class="relative mx-auto w-fit -mb-14">
+                    <div class="relative mx-auto w-fit -mb-14" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
                         <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                             class="absolute bottom-0 w-4/5 h-4/5 left-8">
                         <img class="relative w-auto h-60 sm:h-80 pokemon-picture" :src="pokemon.picture"
@@ -126,6 +126,9 @@ const previous_pokemon = ref<Pokemon>()
 const next_pokemon = ref<Pokemon>()
 const background = ref<string>('bg-gray-100')
 const isPokemonLoaded = ref<boolean>(false)
+const startSwipePokemon = ref<number>(0)
+const endSwipePokemon = ref<number>(0)
+const router = useRouter();
 
 // Set pokemon and pokemon_specy if pokemonStore is loaded
 if (pokemonStore.isLoaded) {
@@ -207,6 +210,60 @@ const enterMain = (el: HTMLElement, done: () => void) => {
             .from(pokemon_specy, { autoAlpha: 0, duration: 0.2 }, "-=0.1")
             .call(done)
     }, container)
+}
+
+/* Swipe */
+const handleTouchStart = (e: TouchEvent) => {
+    const touch = e.touches[0]
+    startSwipePokemon.value = touch.clientX
+}
+
+const handleTouchMove = (e: TouchEvent) => {
+    const touch = e.touches[0]
+    endSwipePokemon.value = touch.clientX
+}
+
+const handleTouchEnd = (e: TouchEvent) => {
+    const touch = e.changedTouches[0]
+    endSwipePokemon.value = touch.clientX
+
+    const direction = getSwipeDirection()
+
+    if (direction == 'left') {
+        if (next_pokemon.value) {
+            router.push({ path: `/pokemons/${next_pokemon.value.id.toString()}`})
+            
+        }
+    } else if (direction == 'right') {
+        if (previous_pokemon.value) {
+            router.push({ path: `/pokemons/${previous_pokemon.value.id.toString()}`})
+        }
+    }
+
+    resetSwipe()
+}
+
+const resetSwipe = () => {
+    startSwipePokemon.value = 0
+    endSwipePokemon.value = 0
+}
+
+/* TODO: Refactoriser ça en composable */
+const getSwipeDirection = () => {
+    const swipeDistance = endSwipePokemon.value - startSwipePokemon.value
+    const swipeDistanceAbs = Math.abs(swipeDistance)
+
+    if (swipeDistanceAbs > 100) {
+        if (swipeDistance > 0) {
+            console.log('swipe right')
+            return 'right'
+        } else {
+            console.log('swipe left')
+            return 'left'
+        }
+    }
+
+    return null
 }
 
 </script>

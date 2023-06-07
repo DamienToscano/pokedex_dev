@@ -6,7 +6,7 @@
             <!-- TODO: add images on the bacground representing the type of the pokemon, leaf, water drop ... -->
             <div class="container p-2 pb-12 mx-auto">
                 <!-- Pokemon part -->
-                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12">
+                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
                     <NuxtLink to="/pokemons">
                         <ArrowLeftIcon class="w-8 h-8 my-6" />
                     </NuxtLink>
@@ -32,7 +32,7 @@
                             <p>{{ capitalize(pokemon_specy.shape) }}</p>
                         </div>
                     </div>
-                    <div class="relative mx-auto w-fit -mb-14" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
+                    <div class="relative mx-auto w-fit -mb-14">
                         <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                             class="absolute bottom-0 w-4/5 h-4/5 left-8">
                         <img class="relative w-auto h-60 sm:h-80 pokemon-picture" :src="pokemon.picture"

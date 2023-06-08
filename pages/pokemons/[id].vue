@@ -64,30 +64,22 @@
                     </nav>
                     <div class="mt-8" @touchstart="handleInfosTouchStart" @touchmove="handleInfosTouchMove" @touchend="handleInfosTouchEnd">
                         <!-- About -->
-                        <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
                             <div id="about" v-if="active_nav == 'About'">
                                 <PokemonAbout :pokemon="pokemon" :pokemon_specy="pokemon_specy"
                                     :pokemon_encounters="pokemon_encounters" />
                             </div>
-                        </Transition>
                         <!-- Stats -->
-                        <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
                             <div id="stats" v-if="active_nav == 'Stats'">
                                 <PokemonStats :stats="pokemon.stats" />
                             </div>
-                        </Transition>
                         <!-- Evolution -->
-                        <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
                             <div id="evolution" v-if="active_nav == 'Evolution'">
                                 <PokemonEvolutions :pokemon_evolutions="pokemon_evolution" />
                             </div>
-                        </Transition>
                         <!-- Moves -->
-                        <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
                             <div class="moves" v-if="active_nav == 'Moves'">
                                 <PokemonMoves :moves="pokemon.moves" />
                             </div>
-                        </Transition>
                     </div>
                 </div>
             </div>
@@ -181,19 +173,6 @@ function playCry() {
     if (!pokemon.value) return
     const audio = new Audio('/audio/cries/' + pokemon.value.id + '.mp3')
     audio.play()
-}
-
-/* Animations */
-const beforeEnter = (el: HTMLElement) => {
-    gsap.set(el, { opacity: 0 })
-}
-
-const enter = (el: HTMLElement, done: () => void) => {
-    gsap.to(el, {
-        opacity: 1,
-        duration: 0.3,
-        onComplete: done,
-    })
 }
 
 const enterMain = (el: HTMLElement, done: () => void) => {

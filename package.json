@@ -16,6 +16,7 @@
     "@heroicons/vue": "^2.0.18",
     "@nuxtjs/tailwindcss": "^6.6.8",
     "@pinia/nuxt": "^0.4.10",
+    "gsap": "^3.11.5",
     "pinia": "^2.0.36"
   },
   "overrides": {

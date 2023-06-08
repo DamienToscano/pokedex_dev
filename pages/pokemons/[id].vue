@@ -6,7 +6,7 @@
             <!-- TODO: add images on the bacground representing the type of the pokemon, leaf, water drop ... -->
             <div class="container p-2 pb-12 mx-auto">
                 <!-- Pokemon part -->
-                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
+                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handlePokemonTouchStart" @touchmove="handlePokemonTouchMove" @touchend="handlePokemonTouchEnd">
                     <NuxtLink to="/pokemons">
                         <ArrowLeftIcon class="w-8 h-8 my-6" />
                     </NuxtLink>
@@ -62,7 +62,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="mt-8">
+                    <div class="mt-8" @touchstart="handleInfosTouchStart" @touchmove="handleInfosTouchMove" @touchend="handleInfosTouchEnd">
                         <!-- About -->
                         <Transition :css="false" appear @before-enter="beforeEnter" @enter="enter">
                             <div id="about" v-if="active_nav == 'About'">
@@ -128,6 +128,8 @@ const background = ref<string>('bg-gray-100')
 const isPokemonLoaded = ref<boolean>(false)
 const startSwipePokemon = ref<number>(0)
 const endSwipePokemon = ref<number>(0)
+const startSwipeInfos = ref<number>(0)
+const endSwipeInfos = ref<number>(0)
 const router = useRouter();
 
 // Set pokemon and pokemon_specy if pokemonStore is loaded
@@ -212,24 +214,22 @@ const enterMain = (el: HTMLElement, done: () => void) => {
     }, container)
 }
 
-/* Swipe */
-const handleTouchStart = (e: TouchEvent) => {
+/* Swipe pokemons */
+const handlePokemonTouchStart = (e: TouchEvent) => {
     const touch = e.touches[0]
     startSwipePokemon.value = touch.clientX
 }
 
-const handleTouchMove = (e: TouchEvent) => {
+const handlePokemonTouchMove = (e: TouchEvent) => {
     const touch = e.touches[0]
     endSwipePokemon.value = touch.clientX
 }
 
-const handleTouchEnd = (e: TouchEvent) => {
+const handlePokemonTouchEnd = (e: TouchEvent) => {
     const touch = e.changedTouches[0]
     endSwipePokemon.value = touch.clientX
 
     const direction = getSwipeDirection(startSwipePokemon.value, endSwipePokemon.value)
-
-    console.log(direction)
 
     if (direction == 'left') {
         if (next_pokemon.value) {
@@ -242,12 +242,48 @@ const handleTouchEnd = (e: TouchEvent) => {
         }
     }
 
-    resetSwipe()
+    resetSwipePokemon()
 }
 
-const resetSwipe = () => {
+const resetSwipePokemon = () => {
     startSwipePokemon.value = 0
     endSwipePokemon.value = 0
+}
+
+// Swipe information tabs
+const handleInfosTouchStart = (e: TouchEvent) => {
+    const touch = e.touches[0]
+    startSwipeInfos.value = touch.clientX
+}
+
+const handleInfosTouchMove = (e: TouchEvent) => {
+    const touch = e.touches[0]
+    endSwipeInfos.value = touch.clientX
+}
+
+const handleInfosTouchEnd = (e: TouchEvent) => {
+    const touch = e.changedTouches[0]
+    endSwipeInfos.value = touch.clientX
+
+    const direction = getSwipeDirection(startSwipeInfos.value, endSwipeInfos.value)
+    const index = nav.findIndex((item) => item.name == active_nav.value)
+
+    if (direction == 'left') {
+        if (index < nav.length - 1) {
+            active_nav.value = nav[index + 1].name
+        }
+    } else if (direction == 'right') {
+        if (index > 0) {
+            active_nav.value = nav[index - 1].name
+        }
+    }
+
+    resetSwipeInfos()
+}
+
+const resetSwipeInfos = () => {
+    startSwipeInfos.value = 0
+    endSwipeInfos.value = 0
 }
 
 </script>

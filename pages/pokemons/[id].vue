@@ -227,7 +227,9 @@ const handleTouchEnd = (e: TouchEvent) => {
     const touch = e.changedTouches[0]
     endSwipePokemon.value = touch.clientX
 
-    const direction = getSwipeDirection()
+    const direction = getSwipeDirection(startSwipePokemon.value, endSwipePokemon.value)
+
+    console.log(direction)
 
     if (direction == 'left') {
         if (next_pokemon.value) {
@@ -246,24 +248,6 @@ const handleTouchEnd = (e: TouchEvent) => {
 const resetSwipe = () => {
     startSwipePokemon.value = 0
     endSwipePokemon.value = 0
-}
-
-/* TODO: Refactoriser ça en composable */
-const getSwipeDirection = () => {
-    const swipeDistance = endSwipePokemon.value - startSwipePokemon.value
-    const swipeDistanceAbs = Math.abs(swipeDistance)
-
-    if (swipeDistanceAbs > 100) {
-        if (swipeDistance > 0) {
-            console.log('swipe right')
-            return 'right'
-        } else {
-            console.log('swipe left')
-            return 'left'
-        }
-    }
-
-    return null
 }
 
 </script>

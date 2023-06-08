@@ -41,10 +41,7 @@ onMounted(() => {
             opacity: 0,
             ease: 'power2.out',
             stagger: 0.2,
-            /* TODO: Make a scroll trigger */
         });
     }, container)
-
-    /* TODO: Faire une vidéo pour evolution et une vidéo pour les moves */
 })
 </script>

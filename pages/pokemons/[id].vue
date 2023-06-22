@@ -1,12 +1,13 @@
 <template>
-    <Transition appear :css="false" @enter="enterMain">
+    <Transition appear :css="false">
         <div v-if="pokemon && pokemon_specy && isPokemonLoaded"
-            class="w-screen min-h-screen before:w-60 before:h-60 before:bg-gradient-to-r before:from-white/50 before:to-white/5 before:absolute before:-top-14 before:-left-28 before:rounded-3xl before:rotate-[60deg] pokemon-container"
+            class="w-screen min-h-screen before:w-60 before:h-60 before:bg-gradient-to-r before:from-white/50 before:to-white/5 before:absolute before:-top-14 before:-left-28 before:rounded-3xl before:rotate-[60deg] transition-colors duration-1000 pokemon-container"
             :class="background">
             <!-- TODO: add images on the bacground representing the type of the pokemon, leaf, water drop ... -->
             <div class="container p-2 pb-12 mx-auto">
                 <!-- Pokemon part -->
-                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handlePokemonTouchStart" @touchmove="handlePokemonTouchMove" @touchend="handlePokemonTouchEnd">
+                <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handlePokemonTouchStart"
+                    @touchmove="handlePokemonTouchMove" @touchend="handlePokemonTouchEnd">
                     <NuxtLink to="/pokemons">
                         <ArrowLeftIcon class="w-8 h-8 my-6" />
                     </NuxtLink>
@@ -36,16 +37,18 @@
                         <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                             class="absolute bottom-0 w-4/5 h-4/5 left-8">
                         <img class="relative w-auto h-60 sm:h-80 pokemon-picture" :src="pokemon.picture"
-                            :alt="`Picture of ${pokemon.name}`">
+                            :alt="`Picture of ${pokemon.name}`" :data-type="pokemon.types[0].name">
                         <!-- Previous pokemon -->
                         <NuxtLink v-if="previous_pokemon" :to="`/pokemons/${previous_pokemon.id}`">
-                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
-                                :src="previous_pokemon.picture" :alt="`Picture of ${pokemon.name}`">
+                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 previous-pokemon-picture"
+                                :src="previous_pokemon.picture" :alt="`Picture of ${previous_pokemon.name}`"
+                                :data-type="previous_pokemon.types[0].name">
                         </NuxtLink>
                         <!-- Next pokemon -->
                         <NuxtLink v-if="next_pokemon" :to="`/pokemons/${next_pokemon.id}`">
-                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100"
-                                :src="next_pokemon.picture" :alt="`Picture of ${pokemon.name}`">
+                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 next-pokemon-picture"
+                                :src="next_pokemon.picture" :alt="`Picture of ${next_pokemon.name}`"
+                                :data-type="next_pokemon.types[0].name">
                         </NuxtLink>
                     </div>
                 </div>
@@ -62,24 +65,25 @@
                             </li>
                         </ul>
                     </nav>
-                    <div class="mt-8" @touchstart="handleInfosTouchStart" @touchmove="handleInfosTouchMove" @touchend="handleInfosTouchEnd">
+                    <div class="mt-8" @touchstart="handleInfosTouchStart" @touchmove="handleInfosTouchMove"
+                        @touchend="handleInfosTouchEnd">
                         <!-- About -->
-                            <div id="about" v-if="active_nav == 'About'">
-                                <PokemonAbout :pokemon="pokemon" :pokemon_specy="pokemon_specy"
-                                    :pokemon_encounters="pokemon_encounters" />
-                            </div>
+                        <div id="about" v-if="active_nav == 'About'">
+                            <PokemonAbout :pokemon="pokemon" :pokemon_specy="pokemon_specy"
+                                :pokemon_encounters="pokemon_encounters" />
+                        </div>
                         <!-- Stats -->
-                            <div id="stats" v-if="active_nav == 'Stats'">
-                                <PokemonStats :stats="pokemon.stats" />
-                            </div>
+                        <div id="stats" v-if="active_nav == 'Stats'">
+                            <PokemonStats :stats="pokemon.stats" />
+                        </div>
                         <!-- Evolution -->
-                            <div id="evolution" v-if="active_nav == 'Evolution'">
-                                <PokemonEvolutions :pokemon_evolutions="pokemon_evolution" />
-                            </div>
+                        <div id="evolution" v-if="active_nav == 'Evolution'">
+                            <PokemonEvolutions :pokemon_evolutions="pokemon_evolution" />
+                        </div>
                         <!-- Moves -->
-                            <div class="moves" v-if="active_nav == 'Moves'">
-                                <PokemonMoves :moves="pokemon.moves" />
-                            </div>
+                        <div class="moves" v-if="active_nav == 'Moves'">
+                            <PokemonMoves :moves="pokemon.moves" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,7 +108,89 @@ import gsap from 'gsap';
 const { id } = useRoute().params
 
 definePageMeta({
-    layout: 'pokemon'
+    layout: 'pokemon',
+    pageTransition: {
+        name: 'slide-right',
+        mode: 'out-in',
+        onBeforeEnter(el) {
+            console.log('Before entering')
+            const pageTransitionName = useRoute().meta.pageTransition.name
+            const previous_pokemon_picture = el.querySelector('.previous-pokemon-picture')
+            const next_pokemon_picture = el.querySelector('.next-pokemon-picture')
+
+            // TEST: Si jamais je ne trouve pas satisfaction ce jeu d'opacité est bien 
+            // Set pokemon picture to opacity 0
+            // const pokemon_picture = el.querySelector('.pokemon-picture')
+            // gsap.set(pokemon_picture, { opacity: 0 })
+
+            if (pageTransitionName == 'slide-left') {
+                const previous_pokemon_type = previous_pokemon_picture?.dataset.type
+                gsap.set(el, { backgroundColor: getTypeColor(previous_pokemon_type) })
+
+            } else if (pageTransitionName == 'slide-right') {
+                const next_pokemon_type = next_pokemon_picture?.dataset.type
+                gsap.set(el, { backgroundColor: getTypeColor(next_pokemon_type) })
+            }
+        },
+        onEnter(el, done) {
+            console.log('Entering')
+            const tl = gsap.timeline()
+            const title = el.querySelector('h1')
+            const types_badges = el.querySelectorAll('.type-badge')
+            const pokemon_id = el.querySelector('.pokemon-id')
+            const pokemon_specy = el.querySelector('.pokemon-specy')
+            const pokemon_picture = el.querySelector('.pokemon-picture')
+            const current_pokemon_type = pokemon_picture?.dataset.type
+            const pageTransitionName = useRoute().meta.pageTransition.name
+
+            // Move pokemon pictures
+            if (pageTransitionName == 'slide-left') {
+                gsap.from(pokemon_picture, { 
+                    x: 200,
+                    scale: 0.6,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'power2.inOut'
+                })
+            } else if (pageTransitionName == 'slide-right') {
+                gsap.from(pokemon_picture, { 
+                    x: -200,
+                    scale: 0.6,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'power2.inOut'
+                })
+            }
+
+            // Set animations
+            let ctx = gsap.context(() => {
+                tl
+                    .to(el, { backgroundColor: getTypeColor(current_pokemon_type), duration: 0.1 })
+                    .from(title, { autoAlpha: 0, x: -10, duration: 0.4 }, 0)
+                    .from(pokemon_id, { autoAlpha: 0, x: 10, duration: 0.4 }, "-=0.4")
+                    .from(types_badges, { autoAlpha: 0, duration: 0.2, stagger: 0.1 }, "-=0.2")
+                    .from(pokemon_specy, { autoAlpha: 0, duration: 0.2 }, "-=0.1")
+                    .call(done)
+            }, el)
+
+
+            // TEST: Si jamais je ne trouve pas satisfaction ce jeu d'opacité est bien 
+            // Set pokemon picture to opacity 1
+            // gsap.to(pokemon_picture, { opacity: 1, duration: 0.5 })
+
+            done()
+        },
+        /* If I remove the onLeave, the navigation is not fluid anymore */
+        onLeave(el, done) {
+
+            done()
+
+            // https://stackoverflow.com/questions/46504338/vue-js-js-animation-hooks-with-gsap-leave-animation-not-working
+        },
+    },
+    middleware(to, from) {
+        to.meta.pageTransition.name = +to.params.id > +from.params.id ? 'slide-left' : 'slide-right'
+    }
 })
 
 
@@ -145,6 +231,7 @@ function getPokemonData() {
     next_pokemon.value = pokemonStore.getPokemonById(Number(id) + 1)
     background.value = `bg-${pokemon.value.types[0].name}`;
     isPokemonLoaded.value = true;
+    console.log('Pokemon loaded')
 }
 
 const nav = <Array<PokemonPageNavigationType>>[
@@ -175,24 +262,6 @@ function playCry() {
     audio.play()
 }
 
-const enterMain = (el: HTMLElement, done: () => void) => {
-    const container = <HTMLElement>el.querySelector('.pokemon-container')
-    const tl = gsap.timeline()
-    const title = el.querySelector('h1')
-    const types_badges = el.querySelectorAll('.type-badge')
-    const pokemon_id = el.querySelector('.pokemon-id')
-    const pokemon_specy = el.querySelector('.pokemon-specy')
-
-    let ctx = gsap.context(() => {
-        tl
-            .from(title, { autoAlpha: 0, x: -10, duration: 0.4 })
-            .from(pokemon_id, { autoAlpha: 0, x: 10, duration: 0.4 }, "-=0.4")
-            .from(types_badges, { autoAlpha: 0, duration: 0.2, stagger: 0.1 }, "-=0.2")
-            .from(pokemon_specy, { autoAlpha: 0, duration: 0.2 }, "-=0.1")
-            .call(done)
-    }, container)
-}
-
 /* Swipe pokemons */
 const handlePokemonTouchStart = (e: TouchEvent) => {
     const touch = e.touches[0]
@@ -212,12 +281,12 @@ const handlePokemonTouchEnd = (e: TouchEvent) => {
 
     if (direction == 'left') {
         if (next_pokemon.value) {
-            router.push({ path: `/pokemons/${next_pokemon.value.id.toString()}`})
-            
+            router.push({ path: `/pokemons/${next_pokemon.value.id.toString()}` })
+
         }
     } else if (direction == 'right') {
         if (previous_pokemon.value) {
-            router.push({ path: `/pokemons/${previous_pokemon.value.id.toString()}`})
+            router.push({ path: `/pokemons/${previous_pokemon.value.id.toString()}` })
         }
     }
 

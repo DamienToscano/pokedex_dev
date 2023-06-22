@@ -141,7 +141,28 @@ definePageMeta({
             const pokemon_specy = el.querySelector('.pokemon-specy')
             const pokemon_picture = el.querySelector('.pokemon-picture')
             const current_pokemon_type = pokemon_picture?.dataset.type
+            const pageTransitionName = useRoute().meta.pageTransition.name
 
+            // Move pokemon pictures
+            if (pageTransitionName == 'slide-left') {
+                gsap.from(pokemon_picture, { 
+                    x: 200,
+                    scale: 0.6,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'power2.inOut'
+                })
+            } else if (pageTransitionName == 'slide-right') {
+                gsap.from(pokemon_picture, { 
+                    x: -200,
+                    scale: 0.6,
+                    opacity: 0,
+                    duration: 0.2,
+                    ease: 'power2.inOut'
+                })
+            }
+
+            // Set animations
             let ctx = gsap.context(() => {
                 tl
                     .to(el, { backgroundColor: getTypeColor(current_pokemon_type), duration: 0.1 })

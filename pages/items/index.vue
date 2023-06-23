@@ -22,6 +22,8 @@ import { storeToRefs } from 'pinia';
 import SearchBar from '@/components/common/SearchBar.vue'
 import ItemCard from '@/components/item/ItemCard.vue'
 import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
 
 const search = ref<string>('');
 

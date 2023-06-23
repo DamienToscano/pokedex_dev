@@ -58,6 +58,7 @@ onMounted(() => {
                 trigger: move_card,
                 start: 'top 100%',
                 // markers: true,
+                toggleActions: 'play none none reverse',
             }
         })
     })

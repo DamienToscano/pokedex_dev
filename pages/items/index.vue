@@ -8,7 +8,7 @@
         <div class="flex flex-wrap justify-center gap-8 bg-white items-list">
             <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                 <template v-for="item in items" :key="item.id">
-                    <ItemCard v-if="item.name.includes(search)" :item="item" />
+                    <ItemCard v-if="item.name.includes(search)" :item="item" class="item-card" />
                 </template>
             </ul>
         </div>
@@ -34,6 +34,22 @@ onMounted(() => {
     const title = <HTMLElement>container.querySelector('h1')
     const search_bar = <HTMLElement>container.querySelector('.search-bar')
     const items_list = <HTMLElement>container.querySelector('.items-list')
+
+    gsap.utils.toArray('.item-card').forEach((item_card) => {
+        gsap.from(item_card, {
+            y: 100,
+            opacity: 0,
+            skewY: 5,
+            scale: 0.9,
+            duration: 0.2,
+            scrollTrigger: {
+                trigger: item_card,
+                start: 'top 100%',
+                // markers: true,
+                toggleActions: 'play none none reverse',
+            }
+        })
+    })
 
     let ctx = gsap.context(() => {
         tl

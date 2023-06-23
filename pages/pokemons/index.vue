@@ -15,7 +15,7 @@
             <template v-for="pokemon in pokemons" :key="pokemon.id">
                 <PokemonCard :pokemon="pokemon" v-if="(filter === '' || pokemon.types.some(type => type.name === filter))
                     && pokemon.name.includes(search)
-                    " />
+                    " class="pokemon-card" />
             </template>
         </div>
     </div>
@@ -30,6 +30,8 @@ import TypeFilterButton from '@/components/common/TypeFilterButton.vue'
 import AllTypesFilterButton from '@/components/common/AllTypesFilterButton.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
 import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
 
 // TODO: For the transition between this page and the pokemon page, see this https://nuxt-view-transitions.surge.sh/ with nuxt 3.4 only
 // https://nuxt.com/docs/getting-started/transitions
@@ -49,6 +51,21 @@ onMounted(() => {
     const type_title = <HTMLElement>container.querySelector('h2')
     const filter_buttons = container.querySelectorAll('.filter-button')
     const pokemons_list = <HTMLElement>container.querySelector('.pokemons-list')
+
+    gsap.utils.toArray('.pokemon-card').forEach((pokemon_card) => {
+        gsap.from(pokemon_card, {
+            y: 100,
+            skewY: 5,
+            scale: 0.9,
+            duration: 0.2,
+            scrollTrigger: {
+                trigger: pokemon_card,
+                start: 'top 100%',
+                // markers: true,
+                toggleActions: 'play none none reverse',
+            }
+        })
+    })
 
     let ctx = gsap.context(() => {
         tl

@@ -37,7 +37,7 @@ onMounted(() => {
     const search_bar = <HTMLElement>container.querySelector('.search-bar')
     const abilities_list = <HTMLElement>container.querySelector('.abilities-list')
 
-        gsap.utils.toArray('.ability-card').forEach((ability_card) => {
+    gsap.utils.toArray('.ability-card').forEach((ability_card) => {
         gsap.from(ability_card, {
             y: 100,
             opacity: 0,

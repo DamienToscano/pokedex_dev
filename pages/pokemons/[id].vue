@@ -113,15 +113,9 @@ definePageMeta({
         name: 'slide-right',
         mode: 'out-in',
         onBeforeEnter(el) {
-            console.log('Before entering')
             const pageTransitionName = useRoute().meta.pageTransition.name
             const previous_pokemon_picture = el.querySelector('.previous-pokemon-picture')
             const next_pokemon_picture = el.querySelector('.next-pokemon-picture')
-
-            // TEST: Si jamais je ne trouve pas satisfaction ce jeu d'opacité est bien 
-            // Set pokemon picture to opacity 0
-            // const pokemon_picture = el.querySelector('.pokemon-picture')
-            // gsap.set(pokemon_picture, { opacity: 0 })
 
             if (pageTransitionName == 'slide-left') {
                 const previous_pokemon_type = previous_pokemon_picture?.dataset.type
@@ -133,7 +127,6 @@ definePageMeta({
             }
         },
         onEnter(el, done) {
-            console.log('Entering')
             const tl = gsap.timeline()
             const title = el.querySelector('h1')
             const types_badges = el.querySelectorAll('.type-badge')
@@ -231,7 +224,6 @@ function getPokemonData() {
     next_pokemon.value = pokemonStore.getPokemonById(Number(id) + 1)
     background.value = `bg-${pokemon.value.types[0].name}`;
     isPokemonLoaded.value = true;
-    console.log('Pokemon loaded')
 }
 
 const nav = <Array<PokemonPageNavigationType>>[

@@ -14,7 +14,7 @@
         <div class="moves-list">
             <ul class="grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3">
                 <template v-for="move in moves" :key="move.id">
-                    <MoveCard v-if="move.description && (filter === '' || move.type === filter) && move.name.includes(search)" :move="move" />
+                    <MoveCard v-if="move.description && (filter === '' || move.type === filter) && move.name.includes(search)" :move="move" class="move-card" />
                 </template>
             </ul>
         </div>
@@ -30,6 +30,8 @@ import TypeFilterButton from '@/components/common/TypeFilterButton.vue'
 import AllTypesFilterButton from '@/components/common/AllTypesFilterButton.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
 import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
 
 const filter = ref<string>('');
 const search = ref<string>('');
@@ -45,6 +47,20 @@ onMounted(() => {
     const type_title = <HTMLElement>container.querySelector('h2')
     const filter_buttons = container.querySelectorAll('.filter-button')
     const move_list = <HTMLElement>container.querySelector('.moves-list')
+    const move_cards = container.querySelectorAll('.move-card')
+
+    gsap.utils.toArray('.move-card').forEach((move_card) => {
+        gsap.from(move_card, {
+            y: 100,
+            opacity: 0,
+            duration: 0.2,
+            scrollTrigger: {
+                trigger: move_card,
+                start: 'top 100%',
+                // markers: true,
+            }
+        })
+    })
 
     let ctx = gsap.context(() => {
         tl

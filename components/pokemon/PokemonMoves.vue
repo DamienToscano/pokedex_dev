@@ -14,6 +14,8 @@ import { PokemonMoveType } from '~/types/pokemons';
 import { usePokemonStore } from '@/stores/PokemonStore'
 import MoveCard from '@/components/move/MoveCard.vue'
 import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
 
 const pokemonStore = usePokemonStore()
 
@@ -32,16 +34,19 @@ const complete_moves = computed(() => {
 })
 
 onMounted(() => {
-    const container = <HTMLElement>document.querySelector('.moves-container')
-    const items = document.querySelectorAll('.move-card')
-
-    let ctx = gsap.context(() => {
-        gsap.from(items, {
-            duration: 1,
+    gsap.utils.toArray('.move-card').forEach((move_card) => {
+        gsap.from(move_card, {
+            y: 100,
             opacity: 0,
-            ease: 'power2.out',
-            stagger: 0.2,
-        });
-    }, container)
+            scale: 0.9,
+            duration: 0.2,
+            scrollTrigger: {
+                trigger: move_card,
+                start: 'top-=50 100%',
+                // markers: true,
+                toggleActions: 'play none none reverse',
+            }
+        })
+    })
 })
 </script>

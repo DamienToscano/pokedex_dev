@@ -36,6 +36,7 @@ gsap.registerPlugin(ScrollTrigger)
 // TODO: For the transition between this page and the pokemon page, see this https://nuxt-view-transitions.surge.sh/ with nuxt 3.4 only
 // https://nuxt.com/docs/getting-started/transitions
 // https://github.com/nuxt/movies
+// https://developer.chrome.com/docs/web-platform/view-transitions/
 
 const pokemonStore = usePokemonStore();
 const filter = ref<string>('');

@@ -10,7 +10,7 @@
         </ul>
         <img src="@/assets/images/pokeball.svg" alt="Pokeball icon" class="absolute transition-all duration-300 ease w-44 h-44 -right-3 -bottom-8 group-hover:rotate-45">
         <img class="absolute w-auto h-40 bottom-1 right-1 group-hover:scale-110 transition-all" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`" 
-        :style="{ 'view-transition-name': `item-${pokemon.id}` }">
+        :style="{ 'view-transition-name': `pokemon-${pokemon.id}` }">
     </NuxtLink>
 </template>
 

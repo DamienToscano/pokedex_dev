@@ -42,7 +42,8 @@
         <img src="@/assets/images/pokeball.svg" alt="Icon of pokeball" class="absolute -right-8 -bottom-6 h-60 w-60">
         <div class="flex flex-col mt-8 justify-around items-center md:flex-row md:mt-0">
             <p class="max-w-lg text-lg sm:text-2xl">{{ pokemon_specy.description }}</p>
-            <img class="relative w-auto h-64 sm:h-80" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`">
+            <img class="relative w-auto h-64 sm:h-80" :src="pokemon.picture" :alt="`Picture of ${pokemon.name}`"
+            :style="{ 'view-transition-name': `pokemon-${pokemon.id}` }">
         </div>
     </div>
 </template>

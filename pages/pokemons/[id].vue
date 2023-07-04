@@ -3,7 +3,6 @@
         <div v-if="pokemon && pokemon_specy && isPokemonLoaded"
             class="w-screen min-h-screen before:w-60 before:h-60 before:bg-gradient-to-r before:from-white/50 before:to-white/5 before:absolute before:-top-14 before:-left-28 before:rounded-3xl before:rotate-[60deg] transition-colors duration-1000 pokemon-container"
             :class="background">
-            <!-- TODO: add images on the bacground representing the type of the pokemon, leaf, water drop ... -->
             <div class="container p-2 pb-12 mx-auto">
                 <!-- Pokemon part -->
                 <div class="relative px-6 pt-6 text-white md:px-12 md:pt-12" @touchstart="handlePokemonTouchStart"
@@ -43,13 +42,15 @@
                         <NuxtLink v-if="previous_pokemon" :to="`/pokemons/${previous_pokemon.id}`">
                             <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 previous-pokemon-picture"
                                 :src="previous_pokemon.picture" :alt="`Picture of ${previous_pokemon.name}`"
-                                :data-type="previous_pokemon.types[0].name">
+                                :data-type="previous_pokemon.types[0].name"
+                                :style="{ 'view-transition-name': `pokemon-${previous_pokemon.id}` }">
                         </NuxtLink>
                         <!-- Next pokemon -->
                         <NuxtLink v-if="next_pokemon" :to="`/pokemons/${next_pokemon.id}`">
                             <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 next-pokemon-picture"
                                 :src="next_pokemon.picture" :alt="`Picture of ${next_pokemon.name}`"
-                                :data-type="next_pokemon.types[0].name">
+                                :data-type="next_pokemon.types[0].name"
+                                :style="{ 'view-transition-name': `pokemon-${next_pokemon.id}` }">
                         </NuxtLink>
                     </div>
                 </div>
@@ -167,19 +168,12 @@ definePageMeta({
                     .call(done)
             }, el)
 
-
-            // TEST: Si jamais je ne trouve pas satisfaction ce jeu d'opacité est bien 
-            // Set pokemon picture to opacity 1
-            // gsap.to(pokemon_picture, { opacity: 1, duration: 0.5 })
-
             done()
         },
         /* If I remove the onLeave, the navigation is not fluid anymore */
         onLeave(el, done) {
 
             done()
-
-            // https://stackoverflow.com/questions/46504338/vue-js-js-animation-hooks-with-gsap-leave-animation-not-working
         },
     },
     middleware(to, from) {

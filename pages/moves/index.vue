@@ -48,21 +48,6 @@ onMounted(() => {
     const filter_buttons = container.querySelectorAll('.filter-button')
     const move_list = <HTMLElement>container.querySelector('.moves-list')
 
-    gsap.utils.toArray('.move-card').forEach((move_card) => {
-        gsap.from(move_card, {
-            y: 100,
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.2,
-            scrollTrigger: {
-                trigger: move_card,
-                start: 'top 100%',
-                // markers: true,
-                toggleActions: 'play none none reverse',
-            }
-        })
-    })
-
     let ctx = gsap.context(() => {
         tl
             .from(title, {

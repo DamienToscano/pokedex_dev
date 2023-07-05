@@ -33,10 +33,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger)
 
-// TODO: For the transition between this page and the pokemon page, see this https://nuxt-view-transitions.surge.sh/ with nuxt 3.4 only
-// https://nuxt.com/docs/getting-started/transitions
-// https://github.com/nuxt/movies
-
 const pokemonStore = usePokemonStore();
 const filter = ref<string>('');
 const search = ref<string>('');
@@ -50,22 +46,6 @@ onMounted(() => {
     const search_bar = <HTMLElement>container.querySelector('.search-bar')
     const type_title = <HTMLElement>container.querySelector('h2')
     const filter_buttons = container.querySelectorAll('.filter-button')
-    const pokemons_list = <HTMLElement>container.querySelector('.pokemons-list')
-
-    gsap.utils.toArray('.pokemon-card').forEach((pokemon_card) => {
-        gsap.from(pokemon_card, {
-            y: 100,
-            skewY: 5,
-            scale: 0.9,
-            duration: 0.2,
-            scrollTrigger: {
-                trigger: pokemon_card,
-                start: 'top 100%',
-                // markers: true,
-                toggleActions: 'play none none reverse',
-            }
-        })
-    })
 
     let ctx = gsap.context(() => {
         tl
@@ -91,11 +71,6 @@ onMounted(() => {
                 ease: 'power2.out',
                 stagger: 0.1,
             }, '-=0.3')
-            .from(pokemons_list, {
-                duration: 0.4,
-                autoAlpha: 0,
-                ease: 'power2.out',
-            }, 0.6)
     }, container)
 })
 </script>

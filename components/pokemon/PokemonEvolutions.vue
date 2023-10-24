@@ -8,8 +8,8 @@
                         <div class="relative text-center font-semibold group">
                             <img src="@/assets/images/pokeball_dark.svg" alt="Pokeball icon"
                                 class="absolute top-1 left-1 opacity-80 w-11/12 h-auto group-hover:rotate-45 transition">
-                            <img :src="evolution.base_pokemon.picture" :alt="`Picture of ${evolution.base_pokemon.name}`"
-                                class="relative h-24 w-auto group-hover:drop-shadow-md">
+                            <img :src="`https://projectpokemon.org/images/normal-sprite/${evolution.base_pokemon.name.replace('-', '_')}.gif`" :alt="`Picture of ${evolution.base_pokemon.name}`"
+                                class="relative max-h-24 w-auto group-hover:drop-shadow-md">
                             <p>{{ capitalize(evolution.base_pokemon.name) }}</p>
                         </div>
                     </NuxtLink>
@@ -23,8 +23,8 @@
                         <div class="relative text-center font-semibold group">
                             <img src="@/assets/images/pokeball_dark.svg" alt="Pokeball icon"
                                 class="absolute top-1 left-1 opacity-80 w-11/12 h-auto group-hover:rotate-45 transition">
-                            <img :src="evolution.picture" :alt="`Picture of ${evolution.name}`"
-                                class="relative h-24 w-auto group-hover:drop-shadow-md">
+                            <img :src="`https://projectpokemon.org/images/normal-sprite/${evolution.name.replace('-', '_')}.gif`" :alt="`Picture of ${evolution.name}`"
+                                class="relative max-h-24 w-auto group-hover:drop-shadow-md">
                             <p>{{ capitalize(evolution.name) }}</p>
                         </div>
                     </NuxtLink>

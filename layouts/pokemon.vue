@@ -12,13 +12,11 @@
                 <slot />
             </div>
         </div>
-
-        <footer class="">
-        </footer>
     </div>
 </template>
 
 <script setup lang="ts">
 import Loader from '@/components/loader/Loader.vue';
+import Footer from '@/components/common/Footer.vue';
 
 </script>

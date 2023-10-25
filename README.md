@@ -64,7 +64,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Credits
 
-- Pokedex Menu App was built with love by [Damien Toscano](https://twitter.com/DamienToscano)
+- This Pokedex was built with love by [Damien Toscano](https://twitter.com/DamienToscano)
 - Design inspired by this [dribbble](https://dribbble.com/shots/6540871-Pokedex-App) from [Saepul Nahwan](https://dribbble.com/saepulnahwan23)
 - Data provided by [PokeAPI](https://pokeapi.co/)
 - Animated pokemons sprites from [ProjectPokemon](https://projectpokemon.org/home/)

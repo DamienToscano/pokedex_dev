@@ -2,8 +2,8 @@
     <div class="home-container">
         <h1 class="title-1 mt-4 sm:mt-12">Welcome to the pokedev</h1>
         <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
-            <MenuCard v-for="item in menu" :key="item.name" :name="item.name" :link="item.link" :bg_color="item.bg_color"
-                :shadow_color="item.shadow_color" class="menu-card" />
+            <MenuCard v-for="item in menu" :key="item.name" :name="item.name" :link="item.link"
+                :bg_color="item.bg_color" :shadow_color="item.shadow_color" class="menu-card" />
         </div>
         <PokemonRandomCard class="mt-6 sm:mt-8 random-card" />
     </div>
@@ -25,6 +25,7 @@ const menu: MenuType[] = [
     { name: 'Moves', link: 'moves', bg_color: 'bg-fighting', shadow_color: 'shadow-fighting/80' },
     { name: 'Abilities', link: 'abilities', bg_color: 'bg-water', shadow_color: 'shadow-water/80' },
     { name: 'Items', link: 'items', bg_color: 'bg-electric', shadow_color: 'shadow-electric/80' },
+    { name: 'Quizz', link: 'quizz', bg_color: 'bg-poison', shadow_color: 'shadow-poison/80' },
 ]
 
 onMounted(() => {

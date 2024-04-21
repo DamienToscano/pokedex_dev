@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { PokemonMoveType } from '~/types/pokemons';
+import type { PokemonMoveType } from '~/types/pokemons';
 import { usePokemonStore } from '@/stores/PokemonStore'
 import MoveCard from '@/components/move/MoveCard.vue'
 import gsap from 'gsap';

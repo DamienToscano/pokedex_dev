@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { capitalize } from 'vue';
-import { PokemonEvolutionType } from '~/types/pokemons';
+import type { PokemonEvolutionType } from '~/types/pokemons';
 import { ArrowRightIcon } from '@heroicons/vue/24/solid';
 import gsap from 'gsap';
 

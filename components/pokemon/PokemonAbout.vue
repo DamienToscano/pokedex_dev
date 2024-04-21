@@ -67,7 +67,7 @@ import { capitalize } from 'vue';
 import { Pokemon } from '~/data/models/pokemon';
 import { PokemonSpecy } from '~/data/models/pokemon-specy';
 import { ScaleIcon, ArrowUpTrayIcon } from '@heroicons/vue/24/outline';
-import { PokemonEncounterType } from '@/types/pokemons';
+import type { PokemonEncounterType } from '@/types/pokemons';
 import gsap from 'gsap';
 
 defineProps<{

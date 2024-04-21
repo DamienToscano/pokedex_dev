@@ -1,8 +1,9 @@
-import { PokemonTypeType, PokemonStatType, PokemonMoveType, PokemonAbilityType } from "@/types/pokemons";
+import type { PokemonTypeType, PokemonStatType, PokemonMoveType, PokemonAbilityType } from "@/types/pokemons";
 
 export class Pokemon {
     id: number;
     name: string;
+    name_fr: string;
     types: Array<PokemonTypeType>;
     picture: string;
     height: number;
@@ -11,10 +12,12 @@ export class Pokemon {
     base_experience: number;
     moves: Array<PokemonMoveType>;
     abilities: Array<PokemonAbilityType>;
+    evolution_step?: number;
 
-    constructor(id: number, name: string, types: Array<PokemonTypeType>, picture: string, height: number, weight: number, stats: Array<PokemonStatType>, base_experience: number, moves: Array<PokemonMoveType>, abilities: Array<PokemonAbilityType>) {
+    constructor(id: number, name: string, name_fr: string, types: Array<PokemonTypeType>, picture: string, height: number, weight: number, stats: Array<PokemonStatType>, base_experience: number, moves: Array<PokemonMoveType>, abilities: Array<PokemonAbilityType>) {
         this.id = id;
         this.name = name;
+        this.name_fr = name_fr;
         this.types = types;
         this.picture = picture;
         this.height = height;
@@ -23,12 +26,14 @@ export class Pokemon {
         this.base_experience = base_experience;
         this.moves = moves;
         this.abilities = abilities;
+        
     }
 
     static fromJson(json: any): Pokemon {
         return new Pokemon(
             json.id,
             json.name,
+            json.name_fr,
             json.types.map((type: any) => {
                 return {
                     name: type.type.name

@@ -1,5 +1,5 @@
 <template>
-    <div class="quizz-container">
+    <div class="quizz-container lg:min-h-[80vh]">
         <NuxtLink to="/">
             <ArrowLeftIcon class="w-8 h-8 text-gray-400 hover:text-black" />
         </NuxtLink>

@@ -9,7 +9,7 @@
             not to the good one !</p>
         <SearchBar v-model="guess" placeholder="Try a pokemon !!!" class="search-bar" @input="searchPokemon" />
         <div v-if="autocompletePokemons.length"
-            class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 max-h-96 bg-gray-100 overflow-auto">
+            class="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 max-h-96 bg-gray-100 overflow-auto mb-4">
             <template v-for="autocomplete in autocompletePokemons" :key="autocomplete.id">
                 <div v-if="!tries.find((element) => element.pokemon.id === autocomplete.id)"
                     class="cursor-pointer hover:bg-gray-200 transition-colors m-4" @click="selectGuess(autocomplete)">

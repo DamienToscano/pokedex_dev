@@ -37,19 +37,19 @@
                     <div class="relative mx-auto w-fit -mb-14">
                         <img src="@/assets/images/pokeball.svg" alt="Pokeball icon"
                             class="absolute bottom-0 w-4/5 h-4/5 left-8">
-                        <img class="relative w-auto h-60 sm:h-80 pokemon-picture" :src="pokemon.picture"
+                        <img class="relative w-auto h-60 sm:h-80 pokemon-picture select-none" :src="pokemon.picture"
                             :alt="`Picture of ${pokemon.name}`" :data-type="pokemon.types[0].name"
                             :style="{ 'view-transition-name': `pokemon-${pokemon.id}` }">
                         <!-- Previous pokemon -->
                         <NuxtLink v-if="previous_pokemon" :to="`/pokemons/${previous_pokemon.id}`">
-                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 previous-pokemon-picture"
+                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -left-40 sm:-left-48 md:-left-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 previous-pokemon-picture select-none"
                                 :src="previous_pokemon.picture" :alt="`Picture of ${previous_pokemon.name}`"
                                 :data-type="previous_pokemon.types[0].name"
                                 :style="{ 'view-transition-name': `pokemon-${previous_pokemon.id}` }">
                         </NuxtLink>
                         <!-- Next pokemon -->
                         <NuxtLink v-if="next_pokemon" :to="`/pokemons/${next_pokemon.id}`">
-                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 next-pokemon-picture"
+                            <img class="absolute w-auto transition-all h-36 sm:h-44 md:h-52 -right-40 sm:-right-48 md:-right-60 top-12 brightness-0 contrast-50 opacity-70 hover:opacity-100 next-pokemon-picture select-none"
                                 :src="next_pokemon.picture" :alt="`Picture of ${next_pokemon.name}`"
                                 :data-type="next_pokemon.types[0].name"
                                 :style="{ 'view-transition-name': `pokemon-${next_pokemon.id}` }">

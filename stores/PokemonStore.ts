@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { Pokemon } from '@/data/models/pokemon'
 import { PokemonSpecy } from '@/data/models/pokemon-specy'
-import { PokemonEvolutionType, PokemonEvolutionBaseType } from '@/types/pokemons'
+import type { PokemonEvolutionType, PokemonEvolutionBaseType } from '@/types/pokemons'
 import { Move } from '@/data/models/move'
 import { Ability } from '@/data/models/ability'
 import { Item } from '~/data/models/item'
@@ -15,10 +15,10 @@ import { PokemonsEvolutions } from '@/data/sources/pokemons/evolutions'
 import { PokemonsList } from '@/data/sources/pokemons/list'
 import { ItemsList } from '@/data/sources/items/list'
 
-
 export const usePokemonStore = defineStore('pokemonStore', {
     state: () => ({
         mode: <string>'local',
+        lang: <'en' | 'fr'>'en',
         pokemons: <Pokemon[]>[],
         pokemons_species: <PokemonSpecy[]>[],
         pokemons_encounters: <PokemonEncounter[]>[],
@@ -76,10 +76,33 @@ export const usePokemonStore = defineStore('pokemonStore', {
             })[0]
         },
         getRandomPokemon: (state) => () => {
-
             const index = Math.floor(Math.random() * state.pokemons.length)
             return state.pokemons[index]
-        }
+        },
+        getPokemonForQuiz: (state) => (id: number) => {
+            const index = id - 1
+            const result = state.pokemons[index]
+            const specy = state.pokemons_species[index]
+            const evolution_step  = state.pokemons_evolutions.filter((evolution) => {
+                return evolution.some((e) => e.id == result.id)
+            })[0].findIndex((e) => e.id == result.id) + 1
+
+            return {
+                pokemon: result,
+                specy: specy,
+                evolution_step: evolution_step
+            } as { pokemon: Pokemon, specy: PokemonSpecy, evolution_step: number }
+        },
+        getPokemonsByName: (state) => (name: string) => {
+            return state.pokemons.filter((pokemon) => {
+                if (state.lang === 'en') {
+                    return pokemon.name.startsWith(name)
+                }
+                else if (state.lang === 'fr') {
+                    return pokemon.name_fr.startsWith(name)
+                }
+            })
+        },
     },
     actions: {
         handleFetch() {
@@ -237,6 +260,9 @@ export const usePokemonStore = defineStore('pokemonStore', {
                     this.formatPokemonEvolutionChain(evolution, pokemon_evolution_chain)
                 }
             })
+        },
+        changeLang(lang: 'en' | 'fr') {
+            this.lang = lang
         },
     },
 })

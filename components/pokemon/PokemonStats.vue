@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { capitalize } from 'vue';
-import { PokemonStatType } from '@/types/pokemons';
+import type { PokemonStatType } from '@/types/pokemons';
 import gsap from 'gsap';
 
 const props = defineProps<{

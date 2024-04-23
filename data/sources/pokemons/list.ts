@@ -4,6 +4,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 1,
         "name": "bulbasaur",
+        "name_fr": "bulbizarre",
         "types": [
             {
                 "name": "grass"
@@ -112,6 +113,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 2,
         "name": "ivysaur",
+        "name_fr": "herbizarre",
         "types": [
             {
                 "name": "grass"
@@ -220,6 +222,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 3,
         "name": "venusaur",
+        "name_fr": "florizarre",
         "types": [
             {
                 "name": "grass"
@@ -328,6 +331,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 4,
         "name": "charmander",
+        "name_fr": "salameche",
         "types": [
             {
                 "name": "fire"
@@ -427,6 +431,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 5,
         "name": "charmeleon",
+        "name_fr": "reptincel",
         "types": [
             {
                 "name": "fire"
@@ -526,6 +531,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 6,
         "name": "charizard",
+        "name_fr": "dracaufeu",
         "types": [
             {
                 "name": "fire"
@@ -628,6 +634,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 7,
         "name": "squirtle",
+        "name_fr": "carapuce",
         "types": [
             {
                 "name": "water"
@@ -727,6 +734,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 8,
         "name": "wartortle",
+        "name_fr": "carabaffe",
         "types": [
             {
                 "name": "water"
@@ -826,6 +834,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 9,
         "name": "blastoise",
+        "name_fr": "tortank",
         "types": [
             {
                 "name": "water"
@@ -925,6 +934,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 10,
         "name": "caterpie",
+        "name_fr": "chenipan",
         "types": [
             {
                 "name": "bug"
@@ -988,6 +998,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 11,
         "name": "metapod",
+        "name_fr": "chrysacier",
         "types": [
             {
                 "name": "bug"
@@ -1041,6 +1052,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 12,
         "name": "butterfree",
+        "name_fr": "papilusion",
         "types": [
             {
                 "name": "bug"
@@ -1137,6 +1149,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 13,
         "name": "weedle",
+        "name_fr": "aspicot",
         "types": [
             {
                 "name": "bug"
@@ -1203,6 +1216,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 14,
         "name": "kakuna",
+        "name_fr": "coconfort",
         "types": [
             {
                 "name": "bug"
@@ -1259,6 +1273,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 15,
         "name": "beedrill",
+        "name_fr": "dardargnan",
         "types": [
             {
                 "name": "bug"
@@ -1349,6 +1364,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 16,
         "name": "pidgey",
+        "name_fr": "roucool",
         "types": [
             {
                 "name": "normal"
@@ -1449,6 +1465,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 17,
         "name": "pidgeotto",
+        "name_fr": "roucoups",
         "types": [
             {
                 "name": "normal"
@@ -1549,6 +1566,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 18,
         "name": "pidgeot",
+        "name_fr": "roucarnage",
         "types": [
             {
                 "name": "normal"
@@ -1649,6 +1667,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 19,
         "name": "rattata",
+        "name_fr": "rattata",
         "types": [
             {
                 "name": "normal"
@@ -1740,6 +1759,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 20,
         "name": "raticate",
+        "name_fr": "rattatac",
         "types": [
             {
                 "name": "normal"
@@ -1831,6 +1851,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 21,
         "name": "spearow",
+        "name_fr": "piafabec",
         "types": [
             {
                 "name": "normal"
@@ -1927,6 +1948,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 22,
         "name": "fearow",
+        "name_fr": "rapasdepic",
         "types": [
             {
                 "name": "normal"
@@ -2023,6 +2045,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 23,
         "name": "ekans",
+        "name_fr": "abo",
         "types": [
             {
                 "name": "poison"
@@ -2120,6 +2143,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 24,
         "name": "arbok",
+        "name_fr": "arbok",
         "types": [
             {
                 "name": "poison"
@@ -2217,6 +2241,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 25,
         "name": "pikachu",
+        "name_fr": "pikachu",
         "types": [
             {
                 "name": "electric"
@@ -2310,6 +2335,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 26,
         "name": "raichu",
+        "name_fr": "raichu",
         "types": [
             {
                 "name": "electric"
@@ -2379,6 +2405,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 27,
         "name": "sandshrew",
+        "name_fr": "sabelette",
         "types": [
             {
                 "name": "ground"
@@ -2466,6 +2493,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 28,
         "name": "sandslash",
+        "name_fr": "sablaireau",
         "types": [
             {
                 "name": "ground"
@@ -2553,6 +2581,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 29,
         "name": "nidoran-f",
+        "name_fr": "nidoran-f",
         "types": [
             {
                 "name": "poison"
@@ -2656,6 +2685,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 30,
         "name": "nidorina",
+        "name_fr": "nidorina",
         "types": [
             {
                 "name": "poison"
@@ -2759,6 +2789,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 31,
         "name": "nidoqueen",
+        "name_fr": "nidoqueen",
         "types": [
             {
                 "name": "poison"
@@ -2847,6 +2878,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 32,
         "name": "nidoran-m",
+        "name_fr": "nidoran-m",
         "types": [
             {
                 "name": "poison"
@@ -2950,6 +2982,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 33,
         "name": "nidorino",
+        "name_fr": "nidorino",
         "types": [
             {
                 "name": "poison"
@@ -3053,6 +3086,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 34,
         "name": "nidoking",
+        "name_fr": "nidoking",
         "types": [
             {
                 "name": "poison"
@@ -3135,6 +3169,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 35,
         "name": "clefairy",
+        "name_fr": "melofee",
         "types": [
             {
                 "name": "fairy"
@@ -3238,6 +3273,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 36,
         "name": "clefable",
+        "name_fr": "melodelfe",
         "types": [
             {
                 "name": "fairy"
@@ -3317,6 +3353,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 37,
         "name": "vulpix",
+        "name_fr": "goupix",
         "types": [
             {
                 "name": "fire"
@@ -3410,6 +3447,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 38,
         "name": "ninetales",
+        "name_fr": "feunard",
         "types": [
             {
                 "name": "fire"
@@ -3485,6 +3523,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 39,
         "name": "jigglypuff",
+        "name_fr": "rondoudou",
         "types": [
             {
                 "name": "normal"
@@ -3591,6 +3630,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 40,
         "name": "wigglytuff",
+        "name_fr": "grodoudou",
         "types": [
             {
                 "name": "normal"
@@ -3673,6 +3713,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 41,
         "name": "zubat",
+        "name_fr": "nosferapti",
         "types": [
             {
                 "name": "poison"
@@ -3763,6 +3804,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 42,
         "name": "golbat",
+        "name_fr": "nosferalto",
         "types": [
             {
                 "name": "poison"
@@ -3859,6 +3901,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 43,
         "name": "oddish",
+        "name_fr": "mystherbe",
         "types": [
             {
                 "name": "grass"
@@ -3955,6 +3998,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 44,
         "name": "gloom",
+        "name_fr": "ortide",
         "types": [
             {
                 "name": "grass"
@@ -4051,6 +4095,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 45,
         "name": "vileplume",
+        "name_fr": "rafflesia",
         "types": [
             {
                 "name": "grass"
@@ -4135,6 +4180,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 46,
         "name": "paras",
+        "name_fr": "paras",
         "types": [
             {
                 "name": "bug"
@@ -4229,6 +4275,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 47,
         "name": "parasect",
+        "name_fr": "parasect",
         "types": [
             {
                 "name": "bug"
@@ -4323,6 +4370,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 48,
         "name": "venonat",
+        "name_fr": "mimitoss",
         "types": [
             {
                 "name": "bug"
@@ -4429,6 +4477,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 49,
         "name": "venomoth",
+        "name_fr": "aeromite",
         "types": [
             {
                 "name": "bug"
@@ -4535,6 +4584,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 50,
         "name": "diglett",
+        "name_fr": "taupiqueur",
         "types": [
             {
                 "name": "ground"
@@ -4626,6 +4676,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 51,
         "name": "dugtrio",
+        "name_fr": "triopikeur",
         "types": [
             {
                 "name": "ground"
@@ -4717,6 +4768,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 52,
         "name": "meowth",
+        "name_fr": "miaouss",
         "types": [
             {
                 "name": "normal"
@@ -4814,6 +4866,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 53,
         "name": "persian",
+        "name_fr": "persian",
         "types": [
             {
                 "name": "normal"
@@ -4911,6 +4964,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 54,
         "name": "psyduck",
+        "name_fr": "psykokwak",
         "types": [
             {
                 "name": "water"
@@ -5002,6 +5056,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 55,
         "name": "golduck",
+        "name_fr": "akwakwak",
         "types": [
             {
                 "name": "water"
@@ -5093,6 +5148,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 56,
         "name": "mankey",
+        "name_fr": "férosinge",
         "types": [
             {
                 "name": "fighting"
@@ -5190,6 +5246,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 57,
         "name": "primeape",
+        "name_fr": "colossinge",
         "types": [
             {
                 "name": "fighting"
@@ -5287,6 +5344,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 58,
         "name": "growlithe",
+        "name_fr": "caninos",
         "types": [
             {
                 "name": "fire"
@@ -5384,6 +5442,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 59,
         "name": "arcanine",
+        "name_fr": "arcanin",
         "types": [
             {
                 "name": "fire"
@@ -5463,6 +5522,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 60,
         "name": "poliwag",
+        "name_fr": "ptitard",
         "types": [
             {
                 "name": "water"
@@ -5560,6 +5620,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 61,
         "name": "poliwhirl",
+        "name_fr": "têtarte",
         "types": [
             {
                 "name": "water"
@@ -5657,6 +5718,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 62,
         "name": "poliwrath",
+        "name_fr": "tartard",
         "types": [
             {
                 "name": "water"
@@ -5739,6 +5801,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 63,
         "name": "abra",
+        "name_fr": "abra",
         "types": [
             {
                 "name": "psychic"
@@ -5800,6 +5863,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 64,
         "name": "kadabra",
+        "name_fr": "kadabra",
         "types": [
             {
                 "name": "psychic"
@@ -5897,6 +5961,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 65,
         "name": "alakazam",
+        "name_fr": "alakazam",
         "types": [
             {
                 "name": "psychic"
@@ -5994,6 +6059,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 66,
         "name": "machop",
+        "name_fr": "machoc",
         "types": [
             {
                 "name": "fighting"
@@ -6085,6 +6151,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 67,
         "name": "machoke",
+        "name_fr": "machopeur",
         "types": [
             {
                 "name": "fighting"
@@ -6176,6 +6243,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 68,
         "name": "machamp",
+        "name_fr": "mackogneur",
         "types": [
             {
                 "name": "fighting"
@@ -6267,6 +6335,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 69,
         "name": "bellsprout",
+        "name_fr": "chetiflor",
         "types": [
             {
                 "name": "grass"
@@ -6375,6 +6444,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 70,
         "name": "weepinbell",
+        "name_fr": "boustiflor",
         "types": [
             {
                 "name": "grass"
@@ -6483,6 +6553,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 71,
         "name": "victreebel",
+        "name_fr": "empiflor",
         "types": [
             {
                 "name": "grass"
@@ -6573,6 +6644,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 72,
         "name": "tentacool",
+        "name_fr": "tentacool",
         "types": [
             {
                 "name": "water"
@@ -6685,6 +6757,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 73,
         "name": "tentacruel",
+        "name_fr": "tentacruel",
         "types": [
             {
                 "name": "water"
@@ -6797,6 +6870,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 74,
         "name": "geodude",
+        "name_fr": "racaillou",
         "types": [
             {
                 "name": "rock"
@@ -6897,6 +6971,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 75,
         "name": "graveler",
+        "name_fr": "gravalanch",
         "types": [
             {
                 "name": "rock"
@@ -6997,6 +7072,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 76,
         "name": "golem",
+        "name_fr": "grolem",
         "types": [
             {
                 "name": "rock"
@@ -7097,6 +7173,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 77,
         "name": "ponyta",
+        "name_fr": "ponyta",
         "types": [
             {
                 "name": "fire"
@@ -7194,6 +7271,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 78,
         "name": "rapidash",
+        "name_fr": "galopa",
         "types": [
             {
                 "name": "fire"
@@ -7291,6 +7369,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 79,
         "name": "slowpoke",
+        "name_fr": "ramoloss",
         "types": [
             {
                 "name": "water"
@@ -7391,6 +7470,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 80,
         "name": "slowbro",
+        "name_fr": "flagadoss",
         "types": [
             {
                 "name": "water"
@@ -7497,6 +7577,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 81,
         "name": "magnemite",
+        "name_fr": "magneti",
         "types": [
             {
                 "name": "electric"
@@ -7597,6 +7678,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 82,
         "name": "magneton",
+        "name_fr": "magneton",
         "types": [
             {
                 "name": "electric"
@@ -7697,6 +7779,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 83,
         "name": "farfetchd",
+        "name_fr": "canarticho",
         "types": [
             {
                 "name": "normal"
@@ -7797,6 +7880,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 84,
         "name": "doduo",
+        "name_fr": "doduo",
         "types": [
             {
                 "name": "normal"
@@ -7897,6 +7981,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 85,
         "name": "dodrio",
+        "name_fr": "dodrio",
         "types": [
             {
                 "name": "normal"
@@ -7997,6 +8082,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 86,
         "name": "seel",
+        "name_fr": "otaria",
         "types": [
             {
                 "name": "water"
@@ -8088,6 +8174,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 87,
         "name": "dewgong",
+        "name_fr": "lamantine",
         "types": [
             {
                 "name": "water"
@@ -8182,6 +8269,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 88,
         "name": "grimer",
+        "name_fr": "tadmorv",
         "types": [
             {
                 "name": "poison"
@@ -8285,6 +8373,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 89,
         "name": "muk",
+        "name_fr": "grotadmorv",
         "types": [
             {
                 "name": "poison"
@@ -8388,6 +8477,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 90,
         "name": "shellder",
+        "name_fr": "kokiyas",
         "types": [
             {
                 "name": "water"
@@ -8485,6 +8575,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 91,
         "name": "cloyster",
+        "name_fr": "crustabri",
         "types": [
             {
                 "name": "water"
@@ -8573,6 +8664,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 92,
         "name": "gastly",
+        "name_fr": "fantominus",
         "types": [
             {
                 "name": "ghost"
@@ -8653,6 +8745,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 93,
         "name": "haunter",
+        "name_fr": "spectrum",
         "types": [
             {
                 "name": "ghost"
@@ -8733,6 +8826,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 94,
         "name": "gengar",
+        "name_fr": "ectoplasma",
         "types": [
             {
                 "name": "ghost"
@@ -8813,6 +8907,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 95,
         "name": "onix",
+        "name_fr": "onix",
         "types": [
             {
                 "name": "rock"
@@ -8913,6 +9008,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 96,
         "name": "drowzee",
+        "name_fr": "soporifik",
         "types": [
             {
                 "name": "psychic"
@@ -9016,6 +9112,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 97,
         "name": "hypno",
+        "name_fr": "hypnomade",
         "types": [
             {
                 "name": "psychic"
@@ -9119,6 +9216,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 98,
         "name": "krabby",
+        "name_fr": "krabby",
         "types": [
             {
                 "name": "water"
@@ -9216,6 +9314,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 99,
         "name": "kingler",
+        "name_fr": "krabboss",
         "types": [
             {
                 "name": "water"
@@ -9313,6 +9412,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 100,
         "name": "voltorb",
+        "name_fr": "voltorbe",
         "types": [
             {
                 "name": "electric"
@@ -9410,6 +9510,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 101,
         "name": "electrode",
+        "name_fr": "electrode",
         "types": [
             {
                 "name": "electric"
@@ -9507,6 +9608,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 102,
         "name": "exeggcute",
+        "name_fr": "noeunoeuf",
         "types": [
             {
                 "name": "grass"
@@ -9609,6 +9711,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 103,
         "name": "exeggutor",
+        "name_fr": "noadkoko",
         "types": [
             {
                 "name": "grass"
@@ -9681,6 +9784,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 104,
         "name": "cubone",
+        "name_fr": "osselait",
         "types": [
             {
                 "name": "ground"
@@ -9778,6 +9882,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 105,
         "name": "marowak",
+        "name_fr": "ossatueur",
         "types": [
             {
                 "name": "ground"
@@ -9875,6 +9980,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 106,
         "name": "hitmonlee",
+        "name_fr": "kicklee",
         "types": [
             {
                 "name": "fighting"
@@ -9972,6 +10078,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 107,
         "name": "hitmonchan",
+        "name_fr": "tygnon",
         "types": [
             {
                 "name": "fighting"
@@ -10069,6 +10176,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 108,
         "name": "lickitung",
+        "name_fr": "excelangue",
         "types": [
             {
                 "name": "normal"
@@ -10166,6 +10274,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 109,
         "name": "koffing",
+        "name_fr": "smogo",
         "types": [
             {
                 "name": "poison"
@@ -10263,6 +10372,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 110,
         "name": "weezing",
+        "name_fr": "smogogo",
         "types": [
             {
                 "name": "poison"
@@ -10360,6 +10470,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 111,
         "name": "rhyhorn",
+        "name_fr": "rhinocorne",
         "types": [
             {
                 "name": "ground"
@@ -10460,6 +10571,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 112,
         "name": "rhydon",
+        "name_fr": "rhinoféros",
         "types": [
             {
                 "name": "ground"
@@ -10560,6 +10672,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 113,
         "name": "chansey",
+        "name_fr": "leveinard",
         "types": [
             {
                 "name": "normal"
@@ -10663,6 +10776,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 114,
         "name": "tangela",
+        "name_fr": "saquedeneu",
         "types": [
             {
                 "name": "grass"
@@ -10766,6 +10880,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 115,
         "name": "kangaskhan",
+        "name_fr": "kangourex",
         "types": [
             {
                 "name": "normal"
@@ -10863,6 +10978,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 116,
         "name": "horsea",
+        "name_fr": "hypotrempe",
         "types": [
             {
                 "name": "water"
@@ -10954,6 +11070,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 117,
         "name": "seadra",
+        "name_fr": "hypocéan",
         "types": [
             {
                 "name": "water"
@@ -11045,6 +11162,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 118,
         "name": "goldeen",
+        "name_fr": "poissirène",
         "types": [
             {
                 "name": "water"
@@ -11148,6 +11266,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 119,
         "name": "seaking",
+        "name_fr": "poissoroy",
         "types": [
             {
                 "name": "water"
@@ -11251,6 +11370,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 120,
         "name": "staryu",
+        "name_fr": "stari",
         "types": [
             {
                 "name": "water"
@@ -11354,6 +11474,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 121,
         "name": "starmie",
+        "name_fr": "staross",
         "types": [
             {
                 "name": "water"
@@ -11430,6 +11551,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 122,
         "name": "mr-mime",
+        "name_fr": "m-mime",
         "types": [
             {
                 "name": "psychic"
@@ -11524,6 +11646,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 123,
         "name": "scyther",
+        "name_fr": "insécateur",
         "types": [
             {
                 "name": "bug"
@@ -11624,6 +11747,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 124,
         "name": "jynx",
+        "name_fr": "lippoutou",
         "types": [
             {
                 "name": "ice"
@@ -11730,6 +11854,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 125,
         "name": "electabuzz",
+        "name_fr": "élektek",
         "types": [
             {
                 "name": "electric"
@@ -11823,6 +11948,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 126,
         "name": "magmar",
+        "name_fr": "magmar",
         "types": [
             {
                 "name": "fire"
@@ -11916,6 +12042,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 127,
         "name": "pinsir",
+        "name_fr": "scarabrute",
         "types": [
             {
                 "name": "bug"
@@ -12013,6 +12140,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 128,
         "name": "tauros",
+        "name_fr": "tauros",
         "types": [
             {
                 "name": "normal"
@@ -12104,6 +12232,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 129,
         "name": "magikarp",
+        "name_fr": "magicarpe",
         "types": [
             {
                 "name": "water"
@@ -12167,6 +12296,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 130,
         "name": "gyarados",
+        "name_fr": "léviator",
         "types": [
             {
                 "name": "water"
@@ -12251,6 +12381,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 131,
         "name": "lapras",
+        "name_fr": "lokhlass",
         "types": [
             {
                 "name": "water"
@@ -12357,6 +12488,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 132,
         "name": "ditto",
+        "name_fr": "métamorph",
         "types": [
             {
                 "name": "normal"
@@ -12414,6 +12546,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 133,
         "name": "eevee",
+        "name_fr": "évoli",
         "types": [
             {
                 "name": "normal"
@@ -12505,6 +12638,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 134,
         "name": "vaporeon",
+        "name_fr": "aquali",
         "types": [
             {
                 "name": "water"
@@ -12616,6 +12750,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 135,
         "name": "jolteon",
+        "name_fr": "voltali",
         "types": [
             {
                 "name": "electric"
@@ -12727,6 +12862,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 136,
         "name": "flareon",
+        "name_fr": "pyroli",
         "types": [
             {
                 "name": "fire"
@@ -12838,6 +12974,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 137,
         "name": "porygon",
+        "name_fr": "porygon",
         "types": [
             {
                 "name": "normal"
@@ -12935,6 +13072,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 138,
         "name": "omanyte",
+        "name_fr": "amonita",
         "types": [
             {
                 "name": "rock"
@@ -13029,6 +13167,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 139,
         "name": "omastar",
+        "name_fr": "amonistar",
         "types": [
             {
                 "name": "rock"
@@ -13123,6 +13262,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 140,
         "name": "kabuto",
+        "name_fr": "kabuto",
         "types": [
             {
                 "name": "rock"
@@ -13217,6 +13357,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 141,
         "name": "kabutops",
+        "name_fr": "kabutops",
         "types": [
             {
                 "name": "rock"
@@ -13311,6 +13452,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 142,
         "name": "aerodactyl",
+        "name_fr": "ptera",
         "types": [
             {
                 "name": "rock"
@@ -13405,6 +13547,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 143,
         "name": "snorlax",
+        "name_fr": "ronflex",
         "types": [
             {
                 "name": "normal"
@@ -13502,6 +13645,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 144,
         "name": "articuno",
+        "name_fr": "artikodin",
         "types": [
             {
                 "name": "ice"
@@ -13586,6 +13730,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 145,
         "name": "zapdos",
+        "name_fr": "electhor",
         "types": [
             {
                 "name": "electric"
@@ -13670,6 +13815,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 146,
         "name": "moltres",
+        "name_fr": "sulfura",
         "types": [
             {
                 "name": "fire"
@@ -13754,6 +13900,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 147,
         "name": "dratini",
+        "name_fr": "minidraco",
         "types": [
             {
                 "name": "dragon"
@@ -13847,6 +13994,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 148,
         "name": "dragonair",
+        "name_fr": "draco",
         "types": [
             {
                 "name": "dragon"
@@ -13940,6 +14088,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 149,
         "name": "dragonite",
+        "name_fr": "dracolosse",
         "types": [
             {
                 "name": "dragon"
@@ -14036,6 +14185,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 150,
         "name": "mewtwo",
+        "name_fr": "mewtwo",
         "types": [
             {
                 "name": "psychic"
@@ -14135,6 +14285,7 @@ export const PokemonsList = <Array<Pokemon>>[
     {
         "id": 151,
         "name": "mew",
+        "name_fr": "mew",
         "types": [
             {
                 "name": "psychic"

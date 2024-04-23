@@ -12,12 +12,14 @@
                     </NuxtLink>
                     <div class="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between">
                         <h1 class="text-5xl font-bold tracking-wider selection:bg-transparent">
-                            {{ capitalize(pokemon.name) }}
+                            <span v-if="pokemonStore.lang == 'en'">{{ capitalize(pokemon.name) }}</span>
+                            <span v-else-if="pokemonStore.lang == 'fr'">{{ capitalize(pokemon.name_fr) }}</span>
                             <SpeakerWaveIcon
                                 class="inline-block w-8 h-8 transition-transform cursor-pointer hover:scale-110 hover:-rotate-12"
                                 @click="playCry" />
                         </h1>
-                        <div class="text-2xl font-bold opacity-80 pokemon-id">#{{ pokemon.id.toString().padStart(3, '0') }}
+                        <div class="text-2xl font-bold opacity-80 pokemon-id">#{{ pokemon.id.toString().padStart(3, '0')
+                            }}
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
@@ -140,7 +142,7 @@ definePageMeta({
 
             // Move pokemon pictures
             if (pageTransitionName == 'slide-left') {
-                gsap.from(pokemon_picture, { 
+                gsap.from(pokemon_picture, {
                     x: 200,
                     scale: 0.6,
                     opacity: 0,
@@ -148,7 +150,7 @@ definePageMeta({
                     ease: 'power2.inOut'
                 })
             } else if (pageTransitionName == 'slide-right') {
-                gsap.from(pokemon_picture, { 
+                gsap.from(pokemon_picture, {
                     x: -200,
                     scale: 0.6,
                     opacity: 0,

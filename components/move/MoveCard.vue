@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { capitalize } from 'vue';
 import { Move } from '~/data/models/move';
-import { PokemonMoveDetailType } from '~/types/pokemons';
+import type { PokemonMoveDetailType } from '~/types/pokemons';
 
 const props = defineProps<{
     move: PokemonMoveDetailType | Move;

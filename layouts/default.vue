@@ -6,7 +6,7 @@
                     <img src="@/assets/images/pokeball.png" alt="Pokeball icon"
                     class="w-12 sm:w-16 h-12 sm:h-16 hover:rotate-180 transition-transform">
                 </NuxtLink>
-                <div class="flex gap-3 text-gray-600">
+                <div class="flex gap-3 text-gray-600 px-2 sm:px-0">
                     <p class="cursor-pointer"
                         @click="pokemonStore.changeLang('en')"
                         :class="{'font-bold': pokemonStore.lang === 'en'}">

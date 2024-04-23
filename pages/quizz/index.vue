@@ -43,57 +43,53 @@
                     <img class="h-[100px] w-[100px] p-2 rounded-xl bg-gray-100 shadow-lg"
                         :src="pokemon_try.pokemon.picture" :alt="pokemon_try.pokemon.name" />
                 </NuxtLink>
-                <div class="grid grid-cols-4 gap-2 grow">
-                    <div class="col-span-2 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
+                <div class="grid grid-cols-12 gap-2 grow truncate">
+                    <div class="col-span-6 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
                 'bg-fire': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 1) == 'fail',
                 'bg-electric': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 1) == 'close',
                 'bg-grass': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 1) == 'success'
             }">{{ pokemon_try.pokemon.types[0].name }}</div>
-                    <div class="col-span-2 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
+                    <div class="col-span-6 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
                 'bg-fire': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'fail',
                 'bg-electric': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'close',
                 'bg-grass': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'success'
             }">{{ pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : 'None' }}</div>
-                    <div class="col-span-3 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
+                    <div class="col-span-8 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
                 'bg-fire': pokemon_try.evolution_step !== pokemonToGuess.evolution_step,
                 'bg-grass': pokemon_try.evolution_step == pokemonToGuess.evolution_step
             }">Evolution #{{ pokemon_try.evolution_step }}</div>
                     <!-- Color -->
-                    <div class="px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
                 'bg-fire': pokemon_try.specy.color !== pokemonToGuess.specy.color,
                 'bg-grass': pokemon_try.specy.color == pokemonToGuess.specy.color
             }">{{ pokemon_try.specy.color }}</div>
                     <!-- Habitat -->
-                    <div class="col-span-2 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg text-xs" :class="{
                 'bg-fire': pokemon_try.specy.habitat !== pokemonToGuess.specy.habitat,
                 'bg-grass': pokemon_try.specy.habitat == pokemonToGuess.specy.habitat
             }">{{ pokemon_try.specy.habitat }}</div>
                     <!-- Height -->
-                    <div class="px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg lowercase" :class="{
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg lowercase" :class="{
                 'bg-fire': ['lower', 'upper'].includes(compareHeight(pokemon_try.pokemon.height)),
                 'bg-grass': compareHeight(pokemon_try.pokemon.height) == 'success'
             }">
-                        <div class="hidden sm:block">
-                            <ArrowDownIcon v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'"
-                                class="w-4 h-4" />
-                            <ArrowUpIcon v-else-if="compareHeight(pokemon_try.pokemon.height) == 'upper'"
-                                class="w-4 h-4 " />
-                        </div>
-                        <p>{{ pokemon_try.pokemon.height / 10 }} m</p>
+                        <p>
+                            <span v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'">&gt</span>
+                            <span v-if="compareHeight(pokemon_try.pokemon.height) == 'upper'">&lt</span>
+                            {{ pokemon_try.pokemon.height / 10 }}kg
+                        </p>
                     </div>
                     <!-- Weight -->
-                    <div class="px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg relative lowercase"
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg relative lowercase"
                         :class="{
                 'bg-fire': ['lower', 'upper'].includes(compareWeight(pokemon_try.pokemon.weight)),
                 'bg-grass': compareWeight(pokemon_try.pokemon.weight) == 'success'
             }">
-                        <div class="hidden sm:block">
-                            <ArrowDownIcon v-if="compareWeight(pokemon_try.pokemon.weight) == 'lower'"
-                                class="w-4 h-4" />
-                            <ArrowUpIcon v-else-if="compareWeight(pokemon_try.pokemon.weight) == 'upper'"
-                                class="w-4 h-4" />
-                        </div>
-                        <p>{{ pokemon_try.pokemon.weight / 10 }} kg</p>
+                        <p>
+                            <span v-if="compareWeight(pokemon_try.pokemon.weight) == 'lower'">&gt</span>
+                            <span v-if="compareWeight(pokemon_try.pokemon.weight) == 'upper'">&lt</span>
+                            {{ pokemon_try.pokemon.weight / 10 }} kg
+                        </p>
                     </div>
                 </div>
             </div>
@@ -140,28 +136,28 @@
                 'bg-grass': pokemon_try.specy.color == pokemonToGuess.specy.color
             }">{{ pokemon_try.specy.color }}</div>
                 <!-- Height -->
-                <div class="h-20 w-20 p-2 rounded-lg flex flex-col items-center justify-center shadow-lg" :class="{
+                <div class="h-20 w-24 p-2 rounded-lg flex flex-col items-center justify-center shadow-lg lowercase"
+                    :class="{
                 'bg-fire': ['lower', 'upper'].includes(compareHeight(pokemon_try.pokemon.height)),
                 'bg-grass': compareHeight(pokemon_try.pokemon.height) == 'success'
             }">
-                    <p>{{ pokemon_try.pokemon.height * 10 }} cm</p>
-                    <div>
-                        <ArrowDownIcon v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'" class="w-6 h-6" />
-                        <ArrowUpIcon v-else-if="compareHeight(pokemon_try.pokemon.height) == 'upper'"
-                            class="w-6 h-6 " />
-                    </div>
+                    <p>
+                        <span v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'">&gt</span>
+                        <span v-if="compareHeight(pokemon_try.pokemon.height) == 'upper'">&lt</span>
+                        {{ pokemon_try.pokemon.height / 10 }}kg
+                    </p>
                 </div>
                 <!-- Weight -->
-                <div class="h-20 w-20 p-2 rounded-lg flex flex-col items-center justify-center shadow-lg" :class="{
+                <div class="h-20 w-24 p-2 rounded-lg flex flex-col items-center justify-center shadow-lg lowercase"
+                    :class="{
                 'bg-fire': ['lower', 'upper'].includes(compareWeight(pokemon_try.pokemon.weight)),
                 'bg-grass': compareWeight(pokemon_try.pokemon.weight) == 'success'
             }">
-                    <p>{{ pokemon_try.pokemon.weight / 10 }} kg</p>
-                    <div>
-                        <ArrowDownIcon v-if="compareWeight(pokemon_try.pokemon.weight) == 'lower'" class="w-6 h-6" />
-                        <ArrowUpIcon v-else-if="compareWeight(pokemon_try.pokemon.weight) == 'upper'"
-                            class="w-6 h-6 " />
-                    </div>
+                    <p>
+                        <span v-if="compareWeight(pokemon_try.pokemon.weight) == 'lower'">&gt</span>
+                        <span v-if="compareWeight(pokemon_try.pokemon.weight) == 'upper'">&lt</span>
+                        {{ pokemon_try.pokemon.weight / 10 }}kg
+                    </p>
                 </div>
             </div>
         </div>
@@ -169,7 +165,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowLeftIcon, ArrowDownIcon, ArrowUpIcon } from '@heroicons/vue/24/solid'
+import { ArrowLeftIcon } from '@heroicons/vue/24/solid'
 import SearchBar from '@/components/common/SearchBar.vue'
 import { usePokemonStore } from '@/stores/PokemonStore';
 import { Pokemon } from '@/data/models/pokemon';

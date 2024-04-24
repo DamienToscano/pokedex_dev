@@ -195,7 +195,6 @@ const { getPokemonForQuiz, getPokemonsByName } = pokemonStore;
 
 const guess = ref<string>('');
 const pokemonToGuess = ref<PokemonQuizzType>(getPokemonForQuiz(Math.floor(Math.random() * 151)));
-console.log(pokemonToGuess.value);
 const autocompletePokemons = ref<Pokemon[]>([]);
 const tries = ref<Array<{ pokemon: Pokemon, specy: PokemonSpecy, evolution_step: number }>>([]);
 const success = ref<boolean>(false);

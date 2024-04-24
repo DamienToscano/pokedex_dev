@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { Pokemon } from '@/data/models/pokemon'
 import { PokemonSpecy } from '@/data/models/pokemon-specy'
-import type { PokemonEvolutionType, PokemonEvolutionBaseType } from '@/types/pokemons'
+import type { PokemonEvolutionType, PokemonEvolutionBaseType, PokemonQuizzType } from '@/types/pokemons'
 import { Move } from '@/data/models/move'
 import { Ability } from '@/data/models/ability'
 import { Item } from '~/data/models/item'
@@ -79,7 +79,7 @@ export const usePokemonStore = defineStore('pokemonStore', {
             const index = Math.floor(Math.random() * state.pokemons.length)
             return state.pokemons[index]
         },
-        getPokemonForQuiz: (state) => (id: number) => {
+        getPokemonForQuiz: (state) => (id: number): PokemonQuizzType => {
             const index = id - 1
             const result = state.pokemons[index]
             const specy = state.pokemons_species[index]
@@ -91,7 +91,7 @@ export const usePokemonStore = defineStore('pokemonStore', {
                 pokemon: result,
                 specy: specy,
                 evolution_step: evolution_step
-            } as { pokemon: Pokemon, specy: PokemonSpecy, evolution_step: number }
+            }
         },
         getPokemonsByName: (state) => (name: string) => {
             return state.pokemons.filter((pokemon) => {

@@ -54,29 +54,38 @@
                 'bg-electric': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'close',
                 'bg-grass': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'success'
             }">{{ pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : 'None' }}</div>
+                    <!-- Evolution -->
                     <div class="col-span-8 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
-                'bg-fire': pokemon_try.evolution_step !== pokemonToGuess.evolution_step,
-                'bg-grass': pokemon_try.evolution_step == pokemonToGuess.evolution_step
-            }">Evolution #{{ pokemon_try.evolution_step }}</div>
+                'bg-fire': ['lower', 'upper'].includes(compareEvolution(pokemon_try.evolution_step)),
+                'bg-grass': compareEvolution(pokemon_try.evolution_step) == 'success'
+            }">
+                        <p>
+                            <span v-if="compareEvolution(pokemon_try.evolution_step) == 'lower'">&gt</span>
+                            <span v-if="compareEvolution(pokemon_try.evolution_step) == 'upper'">&lt</span>
+                            Evolution {{ pokemon_try.evolution_step }}
+                        </p>
+                    </div>
                     <!-- Color -->
                     <div class="col-span-4 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg" :class="{
                 'bg-fire': pokemon_try.specy.color !== pokemonToGuess.specy.color,
                 'bg-grass': pokemon_try.specy.color == pokemonToGuess.specy.color
             }">{{ pokemon_try.specy.color }}</div>
                     <!-- Habitat -->
-                    <div class="col-span-4 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg text-xs" :class="{
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex items-center justify-center shadow-lg text-xs"
+                        :class="{
                 'bg-fire': pokemon_try.specy.habitat !== pokemonToGuess.specy.habitat,
                 'bg-grass': pokemon_try.specy.habitat == pokemonToGuess.specy.habitat
             }">{{ pokemon_try.specy.habitat }}</div>
                     <!-- Height -->
-                    <div class="col-span-4 px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg lowercase" :class="{
+                    <div class="col-span-4 px-2 py-1 rounded-lg flex gap-1 items-center justify-center shadow-lg lowercase"
+                        :class="{
                 'bg-fire': ['lower', 'upper'].includes(compareHeight(pokemon_try.pokemon.height)),
                 'bg-grass': compareHeight(pokemon_try.pokemon.height) == 'success'
             }">
                         <p>
                             <span v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'">&gt</span>
                             <span v-if="compareHeight(pokemon_try.pokemon.height) == 'upper'">&lt</span>
-                            {{ pokemon_try.pokemon.height / 10 }}kg
+                            {{ pokemon_try.pokemon.height / 10 }}m
                         </p>
                     </div>
                     <!-- Weight -->
@@ -122,10 +131,19 @@
                 'bg-electric': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'close',
                 'bg-grass': compareTypes(pokemon_try.pokemon.types[0].name, pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : null, 2) == 'success'
             }">{{ pokemon_try.pokemon.types[1] ? pokemon_try.pokemon.types[1].name : 'None' }}</div>
-                <div class="h-20 w-20 p-2 rounded-lg flex items-center justify-center shadow-lg" :class="{
-                'bg-fire': pokemon_try.evolution_step !== pokemonToGuess.evolution_step,
-                'bg-grass': pokemon_try.evolution_step == pokemonToGuess.evolution_step
-            }">{{ pokemon_try.evolution_step }}</div>
+                <!-- Evolution -->
+                <div class="h-20 w-24 p-2 rounded-lg flex flex-col items-center justify-center shadow-lg lowercase"
+                    :class="{
+                'bg-fire': ['lower', 'upper'].includes(compareEvolution(pokemon_try.evolution_step)),
+                'bg-grass': compareEvolution(pokemon_try.evolution_step) == 'success'
+            }">
+                    <p>
+                        <span v-if="compareEvolution(pokemon_try.evolution_step) == 'lower'">&gt</span>
+                        <span v-if="compareEvolution(pokemon_try.evolution_step) == 'upper'">&lt</span>
+                        {{ pokemon_try.evolution_step }}
+                    </p>
+                </div>
+                <!-- Habitat -->
                 <div class="h-20 w-20 p-2 rounded-lg flex items-center justify-center shadow-lg text-sm" :class="{
                 'bg-fire': pokemon_try.specy.habitat !== pokemonToGuess.specy.habitat,
                 'bg-grass': pokemon_try.specy.habitat == pokemonToGuess.specy.habitat
@@ -144,7 +162,7 @@
                     <p>
                         <span v-if="compareHeight(pokemon_try.pokemon.height) == 'lower'">&gt</span>
                         <span v-if="compareHeight(pokemon_try.pokemon.height) == 'upper'">&lt</span>
-                        {{ pokemon_try.pokemon.height / 10 }}kg
+                        {{ pokemon_try.pokemon.height / 10 }}m
                     </p>
                 </div>
                 <!-- Weight -->
@@ -170,12 +188,14 @@ import SearchBar from '@/components/common/SearchBar.vue'
 import { usePokemonStore } from '@/stores/PokemonStore';
 import { Pokemon } from '@/data/models/pokemon';
 import { PokemonSpecy } from '@/data/models/pokemon-specy';
+import type { PokemonQuizzType } from '@/types/pokemons'
 
 const pokemonStore = usePokemonStore();
 const { getPokemonForQuiz, getPokemonsByName } = pokemonStore;
 
 const guess = ref<string>('');
-const pokemonToGuess = getPokemonForQuiz(Math.floor(Math.random() * 151));
+const pokemonToGuess = ref<PokemonQuizzType>(getPokemonForQuiz(Math.floor(Math.random() * 151)));
+console.log(pokemonToGuess.value);
 const autocompletePokemons = ref<Pokemon[]>([]);
 const tries = ref<Array<{ pokemon: Pokemon, specy: PokemonSpecy, evolution_step: number }>>([]);
 const success = ref<boolean>(false);
@@ -200,7 +220,7 @@ const selectGuess = (pokemon: Pokemon) => {
     tries.value.unshift(data);
     guess.value = '';
     autocompletePokemons.value = [];
-    if (pokemon.id === pokemonToGuess.pokemon.id) {
+    if (pokemon.id === pokemonToGuess.value.pokemon.id) {
         success.value = true;
     }
 
@@ -212,15 +232,16 @@ const selectGuess = (pokemon: Pokemon) => {
 const restart = () => {
     tries.value = [];
     success.value = false;
-    pokemonToGuess.pokemon = getPokemonForQuiz(Math.floor(Math.random() * 151)).pokemon;
+    pokemonToGuess.value = getPokemonForQuiz(Math.floor(Math.random() * 151));
+    console.log(pokemonToGuess.value);
 }
 
 const compareTypes = (type1: string, type2: string | null, type_to_compare: number) => {
     if (type_to_compare === 1) {
-        if (type1 === pokemonToGuess.pokemon.types[0].name) {
+        if (type1 === pokemonToGuess.value.pokemon.types[0].name) {
             return 'success';
         }
-        else if (pokemonToGuess.pokemon.types[1] && type1 === pokemonToGuess.pokemon.types[1].name) {
+        else if (pokemonToGuess.value.pokemon.types[1] && type1 === pokemonToGuess.value.pokemon.types[1].name) {
             return 'close';
         }
         else {
@@ -229,10 +250,10 @@ const compareTypes = (type1: string, type2: string | null, type_to_compare: numb
     }
 
     if (type_to_compare === 2) {
-        if (type2 == pokemonToGuess.pokemon.types[1]?.name) {
+        if (type2 == pokemonToGuess.value.pokemon.types[1]?.name) {
             return 'success';
         }
-        else if (type2 === pokemonToGuess.pokemon.types[0].name) {
+        else if (type2 === pokemonToGuess.value.pokemon.types[0].name) {
             return 'close';
         }
         else {
@@ -242,11 +263,11 @@ const compareTypes = (type1: string, type2: string | null, type_to_compare: numb
 }
 
 const compareHeight = (height: number) => {
-    if (height < pokemonToGuess.pokemon.height) {
-        return 'upper';
-    }
-    else if (height > pokemonToGuess.pokemon.height) {
+    if (height < pokemonToGuess.value.pokemon.height) {
         return 'lower';
+    }
+    else if (height > pokemonToGuess.value.pokemon.height) {
+        return 'upper';
     }
     else {
         return 'success';
@@ -254,10 +275,22 @@ const compareHeight = (height: number) => {
 }
 
 const compareWeight = (weight: number) => {
-    if (weight < pokemonToGuess.pokemon.weight) {
+    if (weight < pokemonToGuess.value.pokemon.weight) {
         return 'lower';
     }
-    else if (weight > pokemonToGuess.pokemon.weight) {
+    else if (weight > pokemonToGuess.value.pokemon.weight) {
+        return 'upper';
+    }
+    else {
+        return 'success';
+    }
+}
+
+const compareEvolution = (evolution: number) => {
+    if (evolution < pokemonToGuess.value.evolution_step) {
+        return 'lower';
+    }
+    else if (evolution > pokemonToGuess.value.evolution_step) {
         return 'upper';
     }
     else {

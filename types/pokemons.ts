@@ -1,3 +1,6 @@
+import type { Pokemon } from "~/data/models/pokemon"
+import type { PokemonSpecy } from "~/data/models/pokemon-specy"
+
 export type PokemonTypeType = {
     name: string
 }
@@ -58,4 +61,10 @@ export type PokemonPageNavigationType = {
 export type PokemonEncounterType = {
     id: number,
     name: string,
+}
+
+export type PokemonQuizzType = {
+    pokemon: Pokemon,
+    specy: PokemonSpecy,
+    evolution_step: number
 }
